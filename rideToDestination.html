@@ -4,6 +4,66 @@
 	<title>Plan for Smart Service : Ride to Destination</title>
 </head>
 <body>
+	<button onclick="home()" class="float-left submit-button" >Home</button>
+	<button id="System logo" class="float-left submit-button" >System logo</button>
+	<button onclick="aboutUs()" class="float-left submit-button" >About us</button>
+	<button	onclick="contactUs()" class="float-left submit-button" >Contact us</button>
+	<button id="Sign up" class="float-left submit-button" >Sign up</button>
+	<button id="Reviews" class="float-left submit-button" >Reviews</button>
+	<button id="Shopping Cart" class="float-left submit-button" >Shopping Cart</button>
+	<button onclick="services()" class="float-left submit-button" >Types of Service</button>
+
+	<script>
+	function home(){
+	  window.location='main.html';
+	}
+	function aboutUs(){
+	  window.location='aboutUs.html';
+	}
+	function contactUs(){
+	  window.location='contactUs.html';
+	}
+	function ride(){
+	  window.location='rideToDestination.html';
+	}
+	function deliver(){
+	  window.location='ride&deliver.html';
+	}
+	function services(){
+	  window.location='services.html';
+	}
+	</script>
+
+<br>
+<img src="https://smartcdn.prod.postmedia.digital/driving/wp-content/uploads/2020/03/chrome-image-410909.png" alt="2020 wrx" width="500">
+<img src="https://images.honda.ca/models/H/Models/2021/civic_sedan/touring_10666_241modern_steel_metallic_front.png?width=1000" alt="2019 civic" width="500">
+<img src="https://cars.usnews.com/static/images/Auto/izmo/i94428619/2019_toyota_camry_angularfront.jpg" alt="2019 camry" width="500">
+
+<br>
+<form action="cart.html">
+  <input type="radio" id="wrx" name="car" value="wrx">
+  <label for="male">2020 Subaru Wrx ($30)</label>
+  <input type="radio" id="civic" name="car" value="civic">
+  <label for="female">2019 Honda Civic ($10)</label>
+  <input type="radio" id="camry" name="car" value="camry">
+  <label for="other">2019 Toyota Camry ($20)</label><br><br>
+
+	<label for="fname">Starting location:</label>
+	<input type="text" id="start" name="start"><br><br>
+	<label for="fname">Destination:</label>
+	<input type="text" id="end" name="end"><br><br>
+
+	<label for="fname">Date:</label>
+	<input type="text" id="start" name="start"><br><br>
+	<label for="fname">Time:</label>
+	<input type="text" id="end" name="end"><br><br>
+
+
+	<input type="submit" value="Add to cart">
+</form>
+
+
+
 
 
 </body>
