@@ -33,7 +33,66 @@
 		window.location='services.html';
 	}
 	</script>
+	<form action="payment.php">
+		<p> Flower Shop A </p>
+	  <label for="flower">Choose your flowers</label>
+	  <select name="flower" id="flower">
+	    <option value="rose">Roses : $3.00 per flower</option>
+	    <option value="peony">Peony : $4.00 per flower</option>
+	    <option value="anemone">Anemone : $5.00 per flower</option>
+	    <option value="lilac">Lilac : $3.50 per flower</option>
+	  </select>
 
+		<label for="amount">Quantity:</label>
+		<input type="text" id="amount" name="amount">
+	  <br><br>
+	  <input type="submit" value="Submit">
+	</form>
+	<form action="payment.php">
+		<p> Flower Shop B </p>
+		<label for="flower">Choose your flowers</label>
+		<select name="flower" id="flower">
+			<option value="dahlia">Dahlia : $1.00 per flower</option>
+			<option value="lilac">Lilac : $2.00 per flower</option>
+			<option value="orchid">Orchid : $6.00 per flower</option>
+			<option value="hydrangea">Hydrangea : $4.50 per flower</option>
+		</select>
+
+		<label for="amount">Quantity:</label>
+		<input type="text" id="amount" name="amount">
+		<br><br>
+		<input type="submit" value="Submit">
+	</form>
+	<form action="payment.php">
+		<p> Coffee Shop A </p>
+		<label for="cafe">Choose your flowers</label>
+		<select name="cafe" id="cafe">
+			<option value="coffee">Coffee $1.50</option>
+			<option value="latte">Latte : $3.00 </option>
+			<option value="tea">Tea : $2.00 per flower</option>
+			<option value="icedcoffee">Iced Coffee : $2.00</option>
+		</select>
+
+		<label for="amount">Quantity:</label>
+		<input type="text" id="amount" name="amount">
+		<br><br>
+		<input type="submit" value="Submit">
+	</form>
+	<form action="payment.php">
+		<p> Coffee Shop B </p>
+		<label for="cafe">Choose your flowers</label>
+		<select name="cafe" id="cafe">
+			<option value="americano"> Americano : $5.00 </option>
+			<option value="coldbrew"> Cold brew coffee : $4.00 </option>
+			<option value="scone"> Fresh Baked Scone : $5.00 </option>
+			<option value="water"> Fancy Water : $10.00 </option>
+		</select>
+
+		<label for="amount">Quantity:</label>
+		<input type="text" id="amount" name="amount">
+		<br><br>
+		<input type="submit" value="Submit">
+	</form>
 
 </body>
 </html>
