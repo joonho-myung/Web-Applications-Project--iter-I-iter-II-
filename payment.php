@@ -4,7 +4,7 @@
 </head>
 <body>
 	<button onclick="home()" class="float-left submit-button" >Home</button>
-	<button id="System logo" class="float-left submit-button" >System logo</button>
+	<button onclick="logo()" class="float-left submit-button" >System logo</button>
 	<button onclick="aboutUs()" class="float-left submit-button" >About us</button>
 	<button	onclick="contactUs()" class="float-left submit-button" >Contact us</button>
 	<button onclick="signup()" class="float-left submit-button" >Sign up</button>
@@ -37,4 +37,10 @@
 	function signup(){
 	  window.location='signup.html';
 	}
+	function logo(){
+      window.location='logo.html';
+    }
 </script>
+
+</body>
+</html>
