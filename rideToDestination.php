@@ -70,6 +70,13 @@ mysqli_close($conn);
     			width: 70%;
     			height: 50%;
     		}
+			#div1 {
+		  align: center;
+		  width: 50px;
+		  height: 50px;
+		  padding: 10px;
+		  border: 1px solid #aaaaaa;
+		}
 
     	</style>
     </head>
@@ -180,6 +187,30 @@ mysqli_close($conn);
     	<input type="text" id="Time" name="time"><br><br>
       <button id="submit"> Add to Cart</button>
 </form>
+
+
+<script>
+	function allowDrop(ev) {
+	  ev.preventDefault();
+	}
+	
+	function drag(ev) {
+	  ev.dataTransfer.setData("text", ev.target.id);
+	}
+	
+	function drop(ev) {
+	  ev.preventDefault();
+	  var data = ev.dataTransfer.getData("text");
+	  ev.target.appendChild(document.getElementById(data));
+	}
+</script>
+<p> Drag the Cart icon and drop it to Square to save order </p>
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<br>
+<img id="drag1" src="https://1.bp.blogspot.com/-vdI00FJMQIs/YEW8-dxFzUI/AAAAAAAAEh8/fYNf-ncS9dMB5YIaZTJ3oKXpXV1qdqBywCLcBGAsYHQ/s320/basket-cart-icon-27.png" draggable="true" ondragstart="drag(event)" width="50" height="50">
+
+
+
     	<script>
     	document.getElementById("submit").addEventListener("click",function(){
     			alert("Order Added to Cart");
