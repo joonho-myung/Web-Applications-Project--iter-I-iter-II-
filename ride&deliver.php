@@ -86,7 +86,7 @@ mysqli_close($conn);
 	  window.location='rideToDestination.html';
 	}
 	function deliver(){
-	  window.location='ride&deliver.html';
+	  window.location='ride&deliver.php';
 	}
 	function services(){
 	  window.location='services.html';
