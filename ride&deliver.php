@@ -17,7 +17,11 @@ $sql = "CREATE TABLE Flower_table (
 flower_id INT(6) UNSIGNED AUTO_INCREMENT UNIQUE,
 flower_name VARCHAR(255) NOT NULL,
 store VARCHAR(255) NOT NULL,
-price VARCHAR(255) NOT NULL
+price VARCHAR(255) NOT NULL,
+startloc VARCHAR(255) NOT NULL,
+endloc VARCHAR(255) NOT NULL,
+date_ VARCHAR(255),
+time_ VARCHAR(255)
 )";
 
 if (mysqli_query($conn, $sql)) {
@@ -35,9 +39,13 @@ $store = $_POST['store'] ?? "";
 $price = substr($flower,8);
 $flower_name = substr($flower,0,8);
 
+$start =  $_POST['startloc'] ?? "";
+$end = $_POST['endloc'] ?? "";
+$date = $_POST['date'] ?? "";
+$time = $_POST['time'] ?? "";
 
-$sql = "INSERT INTO Flower_table (flower_name, store, price)
-VALUES ('$flower_name', '$store','$price')";
+$sql = "INSERT INTO Flower_table (flower_name, store, price, startloc, endloc, date_, time_)
+VALUES ('$flower_name', '$store','$price', '$start','$end','$date','$time')";
 
 if ($conn->multi_query($sql) === TRUE) {
 
@@ -54,7 +62,11 @@ $sql = "CREATE TABLE Coffee_table (
 coffee_id INT(6) UNSIGNED AUTO_INCREMENT UNIQUE,
 coffee_name VARCHAR(255) NOT NULL,
 coffee_store VARCHAR(255) NOT NULL,
-coffee_price VARCHAR(255) NOT NULL
+coffee_price VARCHAR(255) NOT NULL,
+startloc VARCHAR(255) NOT NULL,
+endloc VARCHAR(255) NOT NULL,
+date_ VARCHAR(255),
+time_ VARCHAR(255)
 )";
 
 if (mysqli_query($conn, $sql)) {
@@ -69,8 +81,8 @@ $coffee_price = substr($coffee,17);
 $coffee_name = substr($coffee,0,17);
 
 
-$sql = "INSERT INTO Coffee_table (coffee_name, coffee_store, coffee_price)
-VALUES ('$coffee_name', '$coffee_store','$coffee_price')";
+$sql = "INSERT INTO Coffee_table (coffee_name, coffee_store, coffee_price, startloc, endloc, date_, time_)
+VALUES ('$coffee_name', '$coffee_store','$coffee_price', '$start','$end','$date','$time')";
 
 if ($conn->multi_query($sql) === TRUE) {
 
@@ -87,13 +99,31 @@ mysqli_close($conn);
 <html>
 <head>
 	<title>Plan for Smart Service : Ride to Deliver</title>
-	<style>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+	<style type="text/css">
 		#div1 {
 		  width: 50px;
 		  height: 50px;
 		  padding: 10px;
 		  border: 1px solid #aaaaaa;
 		}
+		#map {
+    	        height: 100%;
+    	      }
+    		html,
+    		body {
+    			height: 100%;
+    			margin: 0;
+    			padding: 0;
+    		}
+
+    		#map {
+    			height: 100%;
+    			float: left;
+    			width: 70%;
+    			height: 50%;
+    		}
+
 	</style>
 </head>
 <body>
@@ -106,7 +136,7 @@ mysqli_close($conn);
 	<button onclick="cart()" class="float-left submit-button" >Shopping Cart</button>
 	<button onclick="services()" class="float-left submit-button" >Types of Service</button>
 
-  <script>
+	<script>
 	function home(){
 	  window.location='main.html';
 	}
@@ -158,9 +188,21 @@ mysqli_close($conn);
 	    </select>
 	  <br><br>
 
+	  <label for="fname">Starting location(City, Province(in Acronyms)):</label>
+    	<input type="text" id="start" name="startloc"><br><br>
+    	<label for="fname">Destination(City, Province(in Acronyms)):</label>
+    	<input type="text" id="end" name="endloc"><br><br>
+
+    	<label for="fname">Date:</label>
+    	<input type="text" id="Date" name="date"><br><br>
+    	<label for="fname">Time:</label>
+    	<input type="text" id="Time" name="time"><br><br>
+
+
       <input type="submit" value="Submit">
 	</form>
 
+	<br><br><br>
 	<form action="" method="post">
     <p> Which Coffee do you want? </p>
 	  <label for="coffee">Choose your Coffee</label>
@@ -182,9 +224,61 @@ mysqli_close($conn);
 	    </select>
 	  <br><br>
 
+	  <label for="fname">Starting location(City, Province(in Acronyms)):</label>
+    	<input type="text" id="start" name="startloc"><br><br>
+    	<label for="fname">Destination(City, Province(in Acronyms)):</label>
+    	<input type="text" id="end" name="endloc"><br><br>
+
+    	<label for="fname">Date:</label>
+    	<input type="text" id="Date" name="date"><br><br>
+    	<label for="fname">Time:</label>
+    	<input type="text" id="Time" name="time"><br><br>
+
+
       <input type="submit" value="Submit">
 	</form>
 
+
+	<script>
+    	    function initMap() {
+    	      const directionsService = new google.maps.DirectionsService();
+    	      const directionsRenderer = new google.maps.DirectionsRenderer();
+    	      const map = new google.maps.Map(document.getElementById("map"), {
+    	        zoom: 7,
+    	        center: { lat: 43.6532, lng: -79.3832 },
+    	      });
+    	      directionsRenderer.setMap(map);
+
+    	      const onChangeHandler = function () {
+    	        calculateAndDisplayRoute(directionsService, directionsRenderer);
+    	      };
+    				document
+    	          .getElementById("start")
+    	          .addEventListener("change", onChangeHandler);
+    	        document
+    	          .getElementById("end")
+    	          .addEventListener("change", onChangeHandler);
+    	    }
+
+    	    function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+    	      directionsService.route(
+    	        {
+    	          origin: {
+    	            query: document.getElementById("start").value,
+    	          },
+    	          destination: {
+    	            query: document.getElementById("end").value,
+    	          },
+    	          travelMode: google.maps.TravelMode.DRIVING,
+    	        },
+    	        (response, status) => {
+    	          if (status === "OK") {
+    	            directionsRenderer.setDirections(response);
+    	          }
+    	        }
+    	      );
+    	    }
+    	  </script>
 
     <p>Drag and drop the Cart icon to Square to save order </p>
     <script>
@@ -205,6 +299,16 @@ mysqli_close($conn);
 	<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
 	<br>
 	<img id="drag1" src="https://1.bp.blogspot.com/-vdI00FJMQIs/YEW8-dxFzUI/AAAAAAAAEh8/fYNf-ncS9dMB5YIaZTJ3oKXpXV1qdqBywCLcBGAsYHQ/s320/basket-cart-icon-27.png" draggable="true" ondragstart="drag(event)" width="50" height="50">
+
+	<br><br><br><br>
+
+	<div id="map"></div>
+
+<!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+<script
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGCD8Bk6r07WnOxrz5AYEbMPdOA1NOGPE&callback=initMap&libraries=&v=weekly"
+	async
+></script>
 
 
 </body>

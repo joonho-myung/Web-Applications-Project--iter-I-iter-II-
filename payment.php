@@ -35,7 +35,7 @@
 	  window.location='cart.php';
 	}
 	function signup(){
-	  window.location='signup.html';
+	  window.location='signup.php';
 	}
 	function logo(){
       window.location='logo.html';

@@ -87,35 +87,35 @@ mysqli_close($conn);
     <button onclick="cart()" class="float-left submit-button" >Shopping Cart</button>
     <button onclick="services()" class="float-left submit-button" >Types of Service</button>
 
-    <script>
-    function home(){
-    	window.location='main.html';
+	<script>
+	function home(){
+	  window.location='main.html';
+	}
+	function aboutUs(){
+	  window.location='aboutUs.html';
+	}
+	function contactUs(){
+	  window.location='contactUs.html';
+	}
+	function ride(){
+	  window.location='rideToDestination.php';
+	}
+	function deliver(){
+	  window.location='ride&deliver.php';
+	}
+	function services(){
+	  window.location='services.html';
+	}
+	function cart(){
+	  window.location='cart.php';
+	}
+	function signup(){
+	  window.location='signup.php';
+	}
+	function logo(){
+      window.location='logo.html';
     }
-    function aboutUs(){
-    	window.location='aboutUs.html';
-    }
-    function contactUs(){
-    	window.location='contactUs.html';
-    }
-    function ride(){
-    	window.location='rideToDestination.php';
-    }
-    function deliver(){
-    	window.location='ride&deliver.php';
-    }
-    function services(){
-    	window.location='services.html';
-    }
-    function cart(){
-    	window.location='cart.php';
-    }
-    function signup(){
-    	window.location='signup.php';
-    }
-    function logo(){
-          window.location='logo.html';
-        }
-    </script>
+</script>
 
     	<script>
     	    function initMap() {
@@ -173,9 +173,9 @@ mysqli_close($conn);
       <input type="radio" id="Camry" name="car" value="camry   $20">
       <label for="other">2019 Toyota Camry ($20)</label><br><br>
 
-    	<label for="fname">Starting location:</label>
+    	<label for="fname">Starting location(City, Province(in Acronyms)):</label>
     	<input type="text" id="start" name="startloc"><br><br>
-    	<label for="fname">Destination:</label>
+    	<label for="fname">Destination(City, Province(in Acronyms)):</label>
     	<input type="text" id="end" name="endloc"><br><br>
 
     	<label for="fname">Date:</label>
