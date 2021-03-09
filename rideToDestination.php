@@ -83,9 +83,9 @@ mysqli_close($conn);
     <button onclick="aboutUs()" class="float-left submit-button" >About us</button>
     <button	onclick="contactUs()" class="float-left submit-button" >Contact us</button>
     <button onclick="signup()" class="float-left submit-button" >Sign up</button>
-    <button id="Reviews" class="float-left submit-button" >Reviews</button>
-    <button onclick="cart()" class="float-left submit-button" >Shopping Cart</button>
-    <button onclick="services()" class="float-left submit-button" >Types of Service</button>
+	<button onclick="review()" class="float-left submit-button" >Reviews</button>
+	<button onclick="cart()" class="float-left submit-button" >Shopping Cart</button>
+	<button onclick="services()" class="float-left submit-button" >Types of Service</button>
 
 	<script>
 	function home(){
@@ -115,6 +115,9 @@ mysqli_close($conn);
 	function logo(){
       window.location='logo.html';
     }
+	function review(){
+		window.location='review.html';
+	}
 </script>
 
     	<script>
