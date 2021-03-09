@@ -16,11 +16,11 @@ catch(PDOException $e)
 $sql = "CREATE TABLE Userdata (
 userid INT(6) UNSIGNED AUTO_INCREMENT UNIQUE,
 fname VARCHAR(255) NOT NULL,
-lname VARCHAR(10) NOT NULL,
+lname VARCHAR(255) NOT NULL,
 email VARCHAR(255) NOT NULL,
 pass VARCHAR(255) NOT NULL,
 pnum VARCHAR(255) NOT NULL,
-addy VARCHAR(255) NOT NULL,
+addy VARCHAR(255) NOT NULL
 )";
 
 if (mysqli_query($conn, $sql)) {

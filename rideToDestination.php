@@ -15,11 +15,12 @@ catch(PDOException $e)
 
 $sql = "CREATE TABLE Ordertable (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-car VARCHAR(10) NOT NULL,
+car_name VARCHAR(10) NOT NULL,
 startloc VARCHAR(255) NOT NULL,
 endloc VARCHAR(255) NOT NULL,
 date_ VARCHAR(255),
 time_ VARCHAR(255),
+price VARCHAR(255),
 reg_date TIMESTAMP
 )";
 if (mysqli_query($conn, $sql)) {
@@ -28,14 +29,17 @@ if (mysqli_query($conn, $sql)) {
 
 }
 
-$car = $_POST['car'];
-$start =  $_POST['startloc'];
-$end = $_POST['endloc'];
-$date = $_POST['date'];
-$time = $_POST['time'];
 
-$sql = "INSERT INTO Ordertable (car,startloc, endloc, date_, time_)
-VALUES ('$car','$start','$end','$date','$time')";
+$car = $_POST['car'] ?? "";
+$price = substr($car,7);
+$car_name = substr($car,0,7);
+$start =  $_POST['startloc'] ?? "";
+$end = $_POST['endloc'] ?? "";
+$date = $_POST['date'] ?? "";
+$time = $_POST['time'] ?? "";
+
+$sql = "INSERT INTO Ordertable (car_name,startloc, endloc, date_, time_,price)
+VALUES ('$car_name','$start','$end','$date','$time','$price')";
 
 if ($conn->multi_query($sql) === TRUE) {
     echo "<br>";
@@ -70,13 +74,6 @@ mysqli_close($conn);
     			width: 70%;
     			height: 50%;
     		}
-			#div1 {
-		  align: center;
-		  width: 50px;
-		  height: 50px;
-		  padding: 10px;
-		  border: 1px solid #aaaaaa;
-		}
 
     	</style>
     </head>
@@ -101,19 +98,19 @@ mysqli_close($conn);
     	window.location='contactUs.html';
     }
     function ride(){
-    	window.location='rideToDestination.html';
+    	window.location='rideToDestination.php';
     }
     function deliver(){
-    	window.location='ride&deliver.html';
+    	window.location='ride&deliver.php';
     }
     function services(){
     	window.location='services.html';
     }
     function cart(){
-    	window.location='cart.html';
+    	window.location='cart.php';
     }
     function signup(){
-    	window.location='signup.html';
+    	window.location='signup.php';
     }
     function logo(){
           window.location='logo.html';
@@ -169,11 +166,11 @@ mysqli_close($conn);
 
     <br>
 <form action="" method="post">
-      <input type="radio" id="Wrx" name="car" value="wrx">
+      <input type="radio" id="Wrx" name="car" value="wrx      $30">
       <label for="male">2020 Subaru Wrx ($30)</label>
-      <input type="radio" id="Civic" name="car" value="civic">
+      <input type="radio" id="Civic" name="car" value="civic   $10">
       <label for="female">2019 Honda Civic ($10)</label>
-      <input type="radio" id="Camry" name="car" value="camry">
+      <input type="radio" id="Camry" name="car" value="camry   $20">
       <label for="other">2019 Toyota Camry ($20)</label><br><br>
 
     	<label for="fname">Starting location:</label>
@@ -187,30 +184,6 @@ mysqli_close($conn);
     	<input type="text" id="Time" name="time"><br><br>
       <button id="submit"> Add to Cart</button>
 </form>
-
-
-<script>
-	function allowDrop(ev) {
-	  ev.preventDefault();
-	}
-	
-	function drag(ev) {
-	  ev.dataTransfer.setData("text", ev.target.id);
-	}
-	
-	function drop(ev) {
-	  ev.preventDefault();
-	  var data = ev.dataTransfer.getData("text");
-	  ev.target.appendChild(document.getElementById(data));
-	}
-</script>
-<p> Drag the Cart icon and drop it to Square to save order </p>
-<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-<br>
-<img id="drag1" src="https://1.bp.blogspot.com/-vdI00FJMQIs/YEW8-dxFzUI/AAAAAAAAEh8/fYNf-ncS9dMB5YIaZTJ3oKXpXV1qdqBywCLcBGAsYHQ/s320/basket-cart-icon-27.png" draggable="true" ondragstart="drag(event)" width="50" height="50">
-
-
-
     	<script>
     	document.getElementById("submit").addEventListener("click",function(){
     			alert("Order Added to Cart");

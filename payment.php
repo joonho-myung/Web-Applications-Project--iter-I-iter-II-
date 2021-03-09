@@ -23,16 +23,16 @@
 	  window.location='contactUs.html';
 	}
 	function ride(){
-	  window.location='rideToDestination.html';
+	  window.location='rideToDestination.php';
 	}
 	function deliver(){
-	  window.location='ride&deliver.html';
+	  window.location='ride&deliver.php';
 	}
 	function services(){
 	  window.location='services.html';
 	}
 	function cart(){
-	  window.location='cart.html';
+	  window.location='cart.php';
 	}
 	function signup(){
 	  window.location='signup.html';
@@ -41,6 +41,8 @@
       window.location='logo.html';
     }
 </script>
+
+
 
 </body>
 </html>
