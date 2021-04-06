@@ -80,6 +80,7 @@ mysqli_close($conn);
        <link rel="stylesheet" type="text/css" href="css/contact.css">
     </head>
     <body>
+<<<<<<< HEAD
       <div id="navbar">
     		<a href="main.html" style="width:7%; position: absolute; right: 22%; color: rgb(0,0,0) !important">Home</a>
     		<a href="database.php" style="width:7%; position: absolute; right: 17% ;color: rgb(0,0,0) !important">Database</a>
@@ -89,6 +90,49 @@ mysqli_close($conn);
         <a href="cart.php">
     		<img alt="Facebook" src="https://www.charge.com/wp-content/uploads/2015/12/cart.png" class="thumbnail" width="50" height="50"></a>
     	</div>
+=======
+    <button onclick="home()" class="float-left submit-button" >Home</button>
+    <button onclick="logo()" class="float-left submit-button" >System logo</button>
+    <button onclick="aboutUs()" class="float-left submit-button" >About us</button>
+    <button	onclick="contactUs()" class="float-left submit-button" >Contact us</button>
+    <button onclick="signup()" class="float-left submit-button" >Sign up</button>
+	<button onclick="review()" class="float-left submit-button" >Reviews</button>
+	<button onclick="cart()" class="float-left submit-button" >Shopping Cart</button>
+	<button onclick="services()" class="float-left submit-button" >Types of Service</button>
+
+	<script>
+	function home(){
+	  window.location='main.html';
+	}
+	function aboutUs(){
+	  window.location='aboutUs.html';
+	}
+	function contactUs(){
+	  window.location='contactUs.html';
+	}
+	function ride(){
+	  window.location='rideToDestination.php';
+	}
+	function deliver(){
+	  window.location='ride&deliver.php';
+	}
+	function services(){
+	  window.location='services.html';
+	}
+	function cart(){
+	  window.location='cart.php';
+	}
+	function signup(){
+	  window.location='signup.php';
+	}
+	function logo(){
+      window.location='logo.html';
+    }
+	function review(){
+		window.location='review.html';
+	}
+</script>
+>>>>>>> 0ab051be7c0ed312cb0b74df91542113814f03b3
 
     	<script>
     	    function initMap() {
@@ -146,9 +190,9 @@ mysqli_close($conn);
       <input type="radio" id="Camry" name="car" value="camry   $20">
       <label for="other">2019 Toyota Camry ($20)</label><br><br>
 
-    	<label for="fname">Starting location:</label>
+    	<label for="fname">Starting location(City, Province(in Acronyms)):</label>
     	<input type="text" id="start" name="startloc"><br><br>
-    	<label for="fname">Destination:</label>
+    	<label for="fname">Destination(City, Province(in Acronyms)):</label>
     	<input type="text" id="end" name="endloc"><br><br>
 
     	<label for="fname">Date:</label>
