@@ -30,24 +30,22 @@ if (mysqli_query($conn, $sql)) {
 }
 
 
-$fname = $_POST['fname'];
-$lname =  $_POST['lname'];
-$email = $_POST['email'];
-$password = $_POST['pass'];
-$phone = $_POST['pnum'];
-$address = $_POST['addy'];
+$fname = $_POST['fname'] ?? "";
+$lname =  $_POST['lname'] ?? "";
+$email = $_POST['email'] ?? "";
+$password = $_POST['pass'] ?? "";
+$phone = $_POST['pnum'] ?? "";
+$address = $_POST['addy'] ?? "";
 
 $sql = "INSERT INTO Userdata (fname, lname, email, pass, pnum, addy)
 VALUES ('$fname','$lname','$email','$password','$phone','$address')";
 
 
 if ($conn->multi_query($sql) === TRUE) {
-    echo "<br>";
-    echo "New records created successfully";
+
 
 } else {
-   echo "<br>";
-    echo "Error: " . $sql . "<br>" . $conn->error;
+
 }
 mysqli_close($conn);
 
@@ -60,7 +58,7 @@ mysqli_close($conn);
   <body>
     <div>
       <!--<form action=main.html>-->
-      <form method="post">
+      <form method="post" action="main.html">
       <label for="fname">First Name:</label>
       <input type="text" id="fname" name="fname"><br><br>
       <label for="lname">Last Name:</label>

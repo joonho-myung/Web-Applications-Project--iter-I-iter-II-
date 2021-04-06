@@ -1,67 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Plan for Smart Service : Contact Us</title>
+	<title>Contact V2</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
 </head>
 <body>
-	<button onclick="home()" class="float-left submit-button" >Home</button>
-	<button onclick="logo()" class="float-left submit-button" >System logo</button>
-	<button onclick="aboutUs()" class="float-left submit-button" >About us</button>
-	<button	onclick="contactUs()" class="float-left submit-button" >Contact us</button>
-	<button onclick="signup()" class="float-left submit-button" >Sign up</button>
-	<button id="Reviews" class="float-left submit-button" >Reviews</button>
-	<button onclick="cart()" class="float-left submit-button" >Shopping Cart</button>
-	<button onclick="services()" class="float-left submit-button" >Types of Service</button>
 
+	<div class="bg-contact2" style="background-image: url('images/bg-01.jpg');">
+		<div class="container-contact2">
+			<div class="wrap-contact2">
+				<form class="contact2-form validate-form">
+					<span class="contact2-form-title">
+						Contact Us
+					</span>
+
+					<div class="wrap-input2 validate-input" data-validate="Name is required">
+						<input class="input2" type="text" name="name">
+						<span class="focus-input2" data-placeholder="NAME"></span>
+					</div>
+
+					<div class="wrap-input2 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input2" type="text" name="email">
+						<span class="focus-input2" data-placeholder="EMAIL"></span>
+					</div>
+
+					<div class="wrap-input2 validate-input" data-validate = "Message is required">
+						<textarea class="input2" name="message"></textarea>
+						<span class="focus-input2" data-placeholder="MESSAGE"></span>
+					</div>
+
+					<div class="container-contact2-form-btn">
+						<div class="wrap-contact2-form-btn">
+							<div class="contact2-form-bgbtn"></div>
+							<button class="contact2-form-btn">
+								Send Your Message
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+
+
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
 	<script>
-	function home(){
-	  window.location='main.html';
-	}
-	function aboutUs(){
-	  window.location='aboutUs.html';
-	}
-	function contactUs(){
-	  window.location='contactUs.html';
-	}
-	function ride(){
-	  window.location='rideToDestination.html';
-	}
-	function deliver(){
-	  window.location='ride&deliver.php';
-	}
-	function services(){
-	  window.location='services.html';
-	}
-	function cart(){
-	  window.location='cart.html';
-	}
-	function signup(){
-	  window.location='signup.html';
-	}
-	function logo(){
-      window.location='logo.html';
-    }
-</script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
 
-	<h1 style="text-align: center; color: rgb(0,0,0); font-family:helvetica"> Contact Info </h1>
-	<dialog open style="text-align: middle; position:relative; left:-500px ;top:100px ; width: 300px; height: 200px">
-  <p > Austin Cheung </p>
-  <p > Email: ahcheung@ryerson.ca </p>
-  <p > Student Id: 500810580</p>
-</dialog>
-
-
-<dialog open style="text-align: middle; position:relative; ;top:-137px ; width: 300px; height:200px">
-<p> Allen You </p>
-<p> Email: allen.you@ryerson.ca </p>
-<p> Student Id : 500833035 </p>
-</dialog>
-
-<dialog open style="text-align: middle; position:relative;left:500px ;top:-373px ; width: 300px; height: 200px">
-<p>  Joonho Myung </p>
-<p> Email: joonho.myung@ryerson.ca </p>
-<p> Student Id: 500845049 </p>
-</dialog>
+	  gtag('config', 'UA-23581568-13');
+	</script>
 
 </body>
 </html>
