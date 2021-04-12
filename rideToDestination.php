@@ -42,8 +42,6 @@ $sql = "INSERT INTO Ordertable (car_name,startloc, endloc, date_, time_,price)
 VALUES ('$car_name','$start','$end','$date','$time','$price')";
 
 if ($conn->multi_query($sql) === TRUE) {
-    echo "<br>";
-    echo "New records created successfully";
 
 } else {
    echo "<br>";
@@ -80,59 +78,17 @@ mysqli_close($conn);
        <link rel="stylesheet" type="text/css" href="css/contact.css">
     </head>
     <body>
-<<<<<<< HEAD
+
       <div id="navbar">
-    		<a href="main.html" style="width:7%; position: absolute; right: 22%; color: rgb(0,0,0) !important">Home</a>
+    		<a href="testing.php" style="width:7%; position: absolute; right: 22%; color: rgb(0,0,0) !important">Home</a>
     		<a href="database.php" style="width:7%; position: absolute; right: 17% ;color: rgb(0,0,0) !important">Database</a>
     		<a onclick="openForm()" style="width:7%; position: absolute; right: 11%; color: rgb(0,0,0) !important"> Contact Us</a>
     		<a href="" style="width:7%; position: absolute; right: 5%; color: rgb(0,0,0) !important"> Reviews</a>
-    		<a href="services.html" style="width:7%;  position: absolute; right: 0%; color: rgb(0,0,0) !important"> Service</a>
+    		<a href="testing.php#!/services" style="width:7%;  position: absolute; right: 0%; color: rgb(0,0,0) !important"> Service</a>
         <a href="cart.php">
     		<img alt="Facebook" src="https://www.charge.com/wp-content/uploads/2015/12/cart.png" class="thumbnail" width="50" height="50"></a>
     	</div>
-=======
-    <button onclick="home()" class="float-left submit-button" >Home</button>
-    <button onclick="logo()" class="float-left submit-button" >System logo</button>
-    <button onclick="aboutUs()" class="float-left submit-button" >About us</button>
-    <button	onclick="contactUs()" class="float-left submit-button" >Contact us</button>
-    <button onclick="signup()" class="float-left submit-button" >Sign up</button>
-	<button onclick="review()" class="float-left submit-button" >Reviews</button>
-	<button onclick="cart()" class="float-left submit-button" >Shopping Cart</button>
-	<button onclick="services()" class="float-left submit-button" >Types of Service</button>
 
-	<script>
-	function home(){
-	  window.location='main.html';
-	}
-	function aboutUs(){
-	  window.location='aboutUs.html';
-	}
-	function contactUs(){
-	  window.location='contactUs.html';
-	}
-	function ride(){
-	  window.location='rideToDestination.php';
-	}
-	function deliver(){
-	  window.location='ride&deliver.php';
-	}
-	function services(){
-	  window.location='services.html';
-	}
-	function cart(){
-	  window.location='cart.php';
-	}
-	function signup(){
-	  window.location='signup.php';
-	}
-	function logo(){
-      window.location='logo.html';
-    }
-	function review(){
-		window.location='review.html';
-	}
-</script>
->>>>>>> 0ab051be7c0ed312cb0b74df91542113814f03b3
 
     	<script>
     	    function initMap() {

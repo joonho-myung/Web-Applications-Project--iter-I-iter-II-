@@ -1,4 +1,7 @@
-
+#map {
+  height: 500px;
+  width: 1000px;
+}
 
 .thumbnail{
   transition: transform .2s; /* Animation */
@@ -10,7 +13,6 @@
 .thumbnail:hover {
     transform: scale(1.5);
 }
-
 
 #navbar a {
   float: left;
@@ -33,6 +35,7 @@
 #navbar a:hover {
   text-decoration:underline;
 }
+
 
 .form-popup {
   display: none;

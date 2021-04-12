@@ -13,7 +13,7 @@ catch(PDOException $e)
     echo "Connection failed: " . $e->getMessage();
     }
 
-$sql = "CREATE TABLE Flower_table (
+$sql = "CREATE TABLE compareFlower_table (
 flower_id INT(6) UNSIGNED AUTO_INCREMENT UNIQUE,
 flower_name VARCHAR(255) NOT NULL,
 store VARCHAR(255) NOT NULL,
@@ -30,31 +30,7 @@ if (mysqli_query($conn, $sql)) {
 
 }
 
-$flower = " ";
-$store = " ";
-
-
-$flower =  $_POST['flower'] ?? "";
-$store = $_POST['store'] ?? "";
-$price = substr($flower,8);
-$flower_name = substr($flower,0,8);
-
-$start =  $_POST['startloc'] ?? "";
-$end = $_POST['endloc'] ?? "";
-$date = $_POST['date'] ?? "";
-$time = $_POST['time'] ?? "";
-
-$sql = "INSERT INTO Flower_table (flower_name, store, price, startloc, endloc, date_, time_)
-VALUES ('$flower_name', '$store','$price', '$start','$end','$date','$time')";
-
-if ($conn->multi_query($sql) === TRUE) {
-
-
-} else {
-
-}
-
-$sql = "CREATE TABLE Coffee_table (
+$sql = "CREATE TABLE compareCoffee_table (
 coffee_id INT(6) UNSIGNED AUTO_INCREMENT UNIQUE,
 coffee_name VARCHAR(255) NOT NULL,
 coffee_store VARCHAR(255) NOT NULL,
@@ -71,14 +47,76 @@ if (mysqli_query($conn, $sql)) {
 
 }
 
-$coffee =  $_POST['coffee'] ?? "";
-$coffee_store = $_POST['coffee_store'] ?? "";
-$coffee_price = substr($coffee,17);
-$coffee_name = substr($coffee,0,17);
+$flower1 =  $_POST['flower1'] ?? "";
+$store1 = $_POST['fstore1'] ?? "";
+$price1 = substr($flower1,8);
+$flower_name1 = substr($flower1,0,8);
+$start1 =  $_POST['fstartloc1'] ?? "";
+$end1 = $_POST['fendloc1'] ?? "";
+$date1 = $_POST['fdate1'] ?? "";
+$time1 = $_POST['ftime1'] ?? "";
+
+$sql = "INSERT INTO compareFlower_table (flower_name, store, price, startloc, endloc, date_, time_)
+VALUES ('$flower_name1', '$store1','$price1', '$start1','$end1','$date1','$time1')";
+
+if ($conn->multi_query($sql) === TRUE) {
 
 
-$sql = "INSERT INTO Coffee_table (coffee_name, coffee_store, coffee_price, startloc, endloc, date_, time_)
-VALUES ('$coffee_name', '$coffee_store','$coffee_price', '$start','$end','$date','$time')";
+} else {
+
+}
+
+$coffee1 = $_POST['coffee1'] ?? "";
+$coffee_store1 = $_POST['coffee_store1'] ?? "";
+$coffee_price1 = substr($coffee1,17);
+$coffee_name1 = substr($coffee1,0,17);
+$coffee_start1 = $_POST['cstartloc1'] ?? "";
+$coffee_end1 = $_POST['cendloc1'] ?? "";
+$coffee_date1 = $_POST['cdate1'] ?? "";
+$coffee_time1 = $_POST['ctime1'] ?? "";
+
+
+$sql = "INSERT INTO compareCoffee_table (coffee_name, coffee_store, coffee_price, startloc, endloc, date_, time_)
+VALUES ('$coffee_name1', '$coffee_store1','$coffee_price1', '$start1','$end1','$date1','$time1')";
+
+if ($conn->multi_query($sql) === TRUE) {
+
+
+} else {
+
+}
+
+$flower2 =  $_POST['flower2'] ?? "";
+$store2 = $_POST['fstore2'] ?? "";
+$price2 = substr($flower2,8);
+$flower_name2 = substr($flower2,0,8);
+$start2 =  $_POST['fstartloc2'] ?? "";
+$end2 = $_POST['fendloc2'] ?? "";
+$date2 = $_POST['fdate2'] ?? "";
+$time2 = $_POST['ftime2'] ?? "";
+
+$sql = "INSERT INTO compareFlower_table (flower_name, store, price, startloc, endloc, date_, time_)
+VALUES ('$flower_name2', '$store2','$price2', '$start2','$end2','$date2','$time2')";
+
+if ($conn->multi_query($sql) === TRUE) {
+
+
+} else {
+
+}
+
+$coffee2 = $_POST['coffee2'] ?? "";
+$coffee_store2 = $_POST['coffee_store2'] ?? "";
+$coffee_price2 = substr($coffee2,17);
+$coffee_name2 = substr($coffee2,0,17);
+$coffee_start2 = $_POST['cstartloc2'] ?? "";
+$coffee_end2 = $_POST['cendloc2'] ?? "";
+$coffee_date2 = $_POST['cdate2'] ?? "";
+$coffee_time2 = $_POST['ctime2'] ?? "";
+
+
+$sql = "INSERT INTO compareCoffee_table (coffee_name, coffee_store, coffee_price, startloc, endloc, date_, time_)
+VALUES ('$coffee_name2', '$coffee_store2','$coffee_price2', '$start2','$end2','$date2','$time2')";
 
 if ($conn->multi_query($sql) === TRUE) {
 
@@ -135,25 +173,25 @@ mysqli_close($conn);
     <a onclick="openForm()" style="width:7%; position: absolute; right: 11%; color: rgb(0,0,0) !important"> Contact Us</a>
     <a href="" style="width:7%; position: absolute; right: 5%; color: rgb(0,0,0) !important"> Reviews</a>
     <a href="testing.php#!/services" style="width:7%;  position: absolute; right: 0%; color: rgb(0,0,0) !important"> Service</a>
-    <a href="cart.php">
+    <a href="compareb.php">
     <img alt="Facebook" src="https://www.charge.com/wp-content/uploads/2015/12/cart.png" class="thumbnail" width="50" height="50"></a>
   </div>
 
 	<form action="" method="post">
+    <div>
 		<p> Which Flower do you want? </p>
 	  <label for="flower">Choose your flowers</label>
-	  <select name="flower" id="flower">
+	  <select name="flower1" id="flower">
 	    <option value="Roses    $3">Roses : $3.00 per flower</option>
 	    <option value="Peony    $4">Peony : $4.00 per flower</option>
 	    <option value="Anemone  $5">Anemone : $5.00 per flower</option>
 	    <option value="Lilac    $3.50">Lilac : $3.50 per flower</option>
 	  </select>
 
-
     <br><br>
 
 	  <label for="store"> Choose your store </label>
-        <select name="store" id="store">
+        <select name="fstore1" id="store">
             <option value="May Flowers"> May Flowers </option>
             <option value="Happy Petals"> Happy Petals </option>
             <option value="Toronto Flowers"> Toronto Flowers </option>
@@ -162,24 +200,18 @@ mysqli_close($conn);
 	  <br><br>
 
 	  <label for="fname">Starting location(City, Province(in Acronyms)):</label>
-    	<input type="text" id="start" name="startloc"><br><br>
+    	<input type="text" id="start" name="fstartloc1"><br><br>
     	<label for="fname">Destination(City, Province(in Acronyms)):</label>
-    	<input type="text" id="end" name="endloc"><br><br>
+    	<input type="text" id="end" name="fendloc1"><br><br>
 
     	<label for="fname">Date:</label>
-    	<input type="text" id="Date" name="date"><br><br>
+    	<input type="text" id="Date" name="fdate1"><br><br>
     	<label for="fname">Time:</label>
-    	<input type="text" id="Time" name="time"><br><br>
+    	<input type="text" id="Time" name="ftime1"><br><br>
 
-
-      <input type="submit" value="Submit">
-	</form>
-
-	<br><br><br>
-	<form action="" method="post">
     <p> Which Coffee do you want? </p>
 	  <label for="coffee">Choose your Coffee</label>
-	  <select name="coffee" id="coffee">
+	  <select name="coffee1" id="coffee">
 	    <option value="Americano        $3"> Americano: $3 </option>
 	    <option value="Caffe Latte      $4"> Caffe Latte: $4 </option>
 	    <option value="Espresso         $2"> Espresso: $2 </option>
@@ -189,7 +221,7 @@ mysqli_close($conn);
     <br><br>
 
 	  <label for="coffee_store"> Choose your store </label>
-        <select name="coffee_store" id="store">
+        <select name="coffee_store1" id="store">
             <option value="The Grind"> The Grind </option>
             <option value="The Roasted Bean"> The Roasted Bean </option>
             <option value="Club Coffee"> Club Coffee </option>
@@ -198,15 +230,76 @@ mysqli_close($conn);
 	  <br><br>
 
 	  <label for="fname">Starting location(City, Province(in Acronyms)):</label>
-    	<input type="text" id="start" name="startloc"><br><br>
+    	<input type="text" id="start" name="cstartloc1"><br><br>
     	<label for="fname">Destination(City, Province(in Acronyms)):</label>
-    	<input type="text" id="end" name="endloc"><br><br>
+    	<input type="text" id="end" name="cendloc1"><br><br>
 
     	<label for="fname">Date:</label>
-    	<input type="text" id="Date" name="date"><br><br>
+    	<input type="text" id="Date" name="cdate1"><br><br>
     	<label for="fname">Time:</label>
-    	<input type="text" id="Time" name="time"><br><br>
+    	<input type="text" id="Time" name="ctime1"><br><br>
+</div>
+<div style="position:absolute; right:45%; top:9%">
+      <p> Which Flower do you want? </p>
+  	  <label for="flower">Choose your flowers</label>
+  	  <select name="flower2" id="flower">
+  	    <option value="Roses    $3">Roses : $3.00 per flower</option>
+  	    <option value="Peony    $4">Peony : $4.00 per flower</option>
+  	    <option value="Anemone  $5">Anemone : $5.00 per flower</option>
+  	    <option value="Lilac    $3.50">Lilac : $3.50 per flower</option>
+  	  </select>
 
+      <br><br>
+
+  	  <label for="store"> Choose your store </label>
+          <select name="fstore2" id="store">
+              <option value="May Flowers"> May Flowers </option>
+              <option value="Happy Petals"> Happy Petals </option>
+              <option value="Toronto Flowers"> Toronto Flowers </option>
+              <option value="All in Bloom"> All in Bloom </option>
+  	    </select>
+  	  <br><br>
+
+  	  <label for="fname">Starting location(City, Province(in Acronyms)):</label>
+      	<input type="text" id="start" name="fstartloc2"><br><br>
+      	<label for="fname">Destination(City, Province(in Acronyms)):</label>
+      	<input type="text" id="end" name="fendloc2"><br><br>
+
+      	<label for="fname">Date:</label>
+      	<input type="text" id="Date" name="fdate2"><br><br>
+      	<label for="fname">Time:</label>
+      	<input type="text" id="Time" name="ftime2"><br><br>
+
+      <p> Which Coffee do you want? </p>
+  	  <label for="coffee">Choose your Coffee</label>
+  	  <select name="coffee2" id="coffee">
+  	    <option value="Americano        $3"> Americano: $3 </option>
+  	    <option value="Caffe Latte      $4"> Caffe Latte: $4 </option>
+  	    <option value="Espresso         $2"> Espresso: $2 </option>
+  	    <option value="Ice Tea          $5"> Iced Tea: $5 </option>
+  	  </select>
+
+      <br><br>
+
+  	  <label for="coffee_store"> Choose your store </label>
+          <select name="coffee_store2" id="store">
+              <option value="The Grind"> The Grind </option>
+              <option value="The Roasted Bean"> The Roasted Bean </option>
+              <option value="Club Coffee"> Club Coffee </option>
+              <option value="Coffee Time"> Coffee Time </option>
+  	    </select>
+  	  <br><br>
+
+  	  <label for="fname">Starting location(City, Province(in Acronyms)):</label>
+      	<input type="text" id="start" name="cstartloc2"><br><br>
+      	<label for="fname">Destination(City, Province(in Acronyms)):</label>
+      	<input type="text" id="end" name="cendloc2"><br><br>
+
+      	<label for="fname">Date:</label>
+      	<input type="text" id="Date" name="cdate2"><br><br>
+      	<label for="fname">Time:</label>
+      	<input type="text" id="Time" name="ctime2"><br><br>
+</div>
 
       <input type="submit" value="Submit">
 	</form>
@@ -254,7 +347,6 @@ mysqli_close($conn);
     	  </script>
 
 
-
 	<br><br><br><br>
 
 	<div id="map"></div>
@@ -265,56 +357,5 @@ mysqli_close($conn);
 	async
 ></script>
 
-  <!--Contact Us Popup Code -->
-  	<div class="form-popup" id="contactus">
-  				<div class="wrap-contact2">
-  					<form class="contact2-form">
-  						<span class="contact2-form-title">
-  							Contact Us
-  						</span>
-
-  						<div class="wrap-input2">
-  							<input class="input2" type="text" name="name">
-  							<span class="focus-input2" data-placeholder="NAME"></span>
-  						</div>
-
-  						<div class="wrap-input2">
-  							<input class="input2" type="text" name="email">
-  							<span class="focus-input2" data-placeholder="EMAIL"></span>
-  						</div>
-
-  						<div class="wrap-input2">
-  							<textarea class="input2" name="message"></textarea>
-  							<span class="focus-input2" data-placeholder="MESSAGE"></span>
-  						</div>
-
-  						<div class="container-contact2-form-btn">
-  							<div class="wrap-contact2-form-btn">
-  								<div class="contact2-form-bgbtn"></div>
-  								<button class="contact2-form-btn">
-  									Send Your Message
-  								</button>
-  							</div>
-  							<div class="wrap-contact2-form-btn">
-  								<div class="contact2-form-bgbtn"></div>
-  								<button class="contact2-form-btn" onclick="closeForm()">
-  									Close
-  								</button>
-  							</div>
-  						</div>
-  					</form>
-  				</div>
-
-  	</div>
-  		<script>
-
-  		function openForm() {
-  		  document.getElementById("contactus").style.display = "block";
-  		}
-
-  		function closeForm() {
-  		  document.getElementById("contactus").style.display = "none";
-  		}
-  		</script>
 </body>
 </html>
