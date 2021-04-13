@@ -72,9 +72,16 @@
         <input name="pass" type="text" id="pass">
       </p>
       <p>
-        <input type="submit" value="Sign In" name="signin">
+        <input type="submit" value="Log In" name="signin">
+        <a href="signup.php">
+          <input type="button" value="Sign Up" />
+        </a>
+        <a href="testing.php">
+          <input type="button" value="Back" />
+        </a>
       </p>
       </form>
+
       </div>
   </body>
 </html>
