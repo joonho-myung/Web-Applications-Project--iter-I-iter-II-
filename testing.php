@@ -34,13 +34,37 @@
 <div id="navbar">
 		<a href="#/!">
 		<img alt="Home" src="https://1.bp.blogspot.com/-LJJmwm602gY/YEU7eobTIoI/AAAAAAAAEhg/mfYMtSPDgngyCRcdZCVLUKH2EfYOertgQCLcBGAsYHQ/s200/21ea6db1-48d1-4ca9-850b-8e3ca24ee317_200x200.png" class="thumbnail" width="50" height="50"></a>
-		<h1> Smart Service </h1>
+		<h1> Smart Service
+			<?php
+			session_start();
+			if(isset($_SESSION['userid'])){
+				$userid = $_SESSION['userid'];
+				$conn = new mysqli("localhost", "root","","userdb");
+				$sql = "SELECT fname FROM userdata WHERE userid='$userid'";
+				$result= $conn->query($sql);
+				$row= $result->fetch_assoc();
+
+				$fname = $row['fname'];
+
+				echo "Welcome Back, ".$fname;
+			}
+			 ?>
+		</h1>
 		<a href="#/!" style="width:7%; position: absolute;top:4% ;right: 22%; color: rgb(0,0,0) !important">Home</a>
 		<a href="#!database" style="width:7%; position: absolute;top:4% ; right: 17% ;color: rgb(0,0,0) !important">Database</a>
 		<a onclick="openForm()" style="width:7%; position: absolute;top:4% ; right: 11%; color: rgb(0,0,0) !important"> Contact Us</a>
 		<a href="" style="width:7%; position: absolute;top:4% ; right: 5%; color: rgb(0,0,0) !important"> Reviews</a>
 		<a href="#!services" style="width:7%;  position: absolute;top:4% ; right: 0%; color: rgb(0,0,0) !important"> Service</a>
-		<a href="#!signup" style="font-size: 15px;width:7%;  position: absolute;top:9% ;right: -2%; color: rgb(0,0,0) !important"> Signup</a>
+		<?php
+		if(isset($_SESSION['userid'])){
+			echo '<a href="logoff.php" style="font-size: 15px;width:7%;  position: absolute;top:9% ;right: -2%; color: rgb(0,0,0) !important"> Logout</a>';
+		}else{
+			echo'
+			<a href="signup.php" style="font-size: 15px;width:7%;  position: absolute;top:9% ;right: 2%; color: rgb(0,0,0) !important"> Sign up</a>
+			<a href="signin.php" style="font-size: 15px;width:7%;  position: absolute;top:9% ;right: -2%; color: rgb(0,0,0) !important"> Sign in</a>
+			';
+		}
+		?>
 	</div>
 
 	<!--Contact Us Popup Code -->

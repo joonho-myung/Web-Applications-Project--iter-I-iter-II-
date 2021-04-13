@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>Plan for Smart Service : Sign In</title>
+    <link rel="stylesheet" href="style.css">
+
   </head>
   <body>
     <?php
@@ -37,8 +39,8 @@
              $result = $conn->query($sql);
              $row = $result->fetch_assoc();
 
-             $_SESSION["USERID"] = $row['userid'];
-             header("Location: main.php");
+             $_SESSION["userid"] = $row['userid'];
+             header("Location: testing.php");
 
           }
           echo " login unsuccessful ";
@@ -47,12 +49,19 @@
         ?>
     <div>
       <form action=signin.php method="post">
-      <label for="email">Email:</label>
-      <input type="text" id="email" name="email"><br><br>
-      <label for="pass">Password:</label>
-      <input type="text" id="pass" name="pass"><br><br>
-      <input type="submit" name="signin" value="signin">
-</form>
+      <h2> Sign In</h2>
+      <p>
+        <label for="Email" class="floatLabel">Email</label>
+        <input id="Email" name="email" type="text">
+      </p>
+      <p>
+        <label for="password" class="floatLabel">Password</label>
+        <input name="pass" type="text" id="pass">
+      </p>
+      <p>
+        <input type="submit" value="Sign In" name="signin">
+      </p>
+      </form>
       </div>
   </body>
 </html>

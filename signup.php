@@ -66,7 +66,7 @@
 
       mysqli_close($conn);
 
-      header("Location: main.php");
+      header("Location: testing.php");
     }
     ?>
 
