@@ -25,9 +25,14 @@ The Admin can maintain the database to cover alltypes of data: user accounts, lo
       unset($_SESSION['currid']);
       header("Location: admin.php");
     }
+    if(isset($_POST['delete'])){
+      delete();
+      unset($_SESSION['currid']);
+      header("Location: admin.php");
+    }
     if(isset($_POST['select']) || isset($_POST['edit'])){
       if(isset($_POST['edit'])){
-        edit($conn);
+        edit();
       }
       if(isset($_POST['userid'])){
         $userid = $_POST['userid'];
@@ -65,7 +70,7 @@ The Admin can maintain the database to cover alltypes of data: user accounts, lo
       <input type="submit" name="edit" value="Edit">
 
       <br><br>
-      <input type="submit" name="deleteuser" value="Delete User">
+      <input type="submit" name="delete" value="Delete User">
       </form>
       <br><br><br>
       <button onclick="rideToDestination()">Ride to Destination</button>
@@ -107,7 +112,7 @@ The Admin can maintain the database to cover alltypes of data: user accounts, lo
  </body>
  </html>
 <?php
-function edit($conn){
+function edit(){
   $userid = $_SESSION['currid'];
   $fname = $_POST['fname'] ?? "";
   $lname =  $_POST['lname'] ?? "";
@@ -131,6 +136,20 @@ function edit($conn){
     $smt = $pdo->prepare($sql);
     $smt->execute(array($passw,$userid));
   }
+}
+function delete(){
+  $userid = $_SESSION['currid'];
+
+  $dsn = 'mysql:dbname=userdb;host=localhost';
+  $user = 'root';
+  $pass = '';
+  $pdo = new PDO($dsn,$user,$pass);
+
+  $sql = "DELETE FROM userdata WHERE userid=?";
+  $smt = $pdo->prepare($sql);
+  $smt->execute(array($userid));
+
+  echo "yeeh";
 }
 ?>
 
