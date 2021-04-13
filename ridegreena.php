@@ -88,8 +88,7 @@ mysqli_close($conn);
     		}
 
     	</style>
-       <link rel="stylesheet" type="text/css" href="style.css">
-       <link rel="stylesheet" type="text/css" href="contact.css">
+       <link rel="stylesheet" type="text/css" href="style.css";
     </head>
     <body>
 
@@ -170,6 +169,7 @@ mysqli_close($conn);
     	<label for="fname">Time:</label>
     	<input type="text" id="Time" name="time1"><br><br>
 
+<div style="position:absolute; right:40%; top:46%">
       <input type="radio" id="Wrx" name="car2" value="wrx      $30">
       <label for="male">2020 Subaru Wrx ($30)</label>
       <input type="radio" id="Civic" name="car2" value="civic   $10">
@@ -186,6 +186,7 @@ mysqli_close($conn);
       <input type="text" id="Date" name="date2"><br><br>
       <label for="fname">Time:</label>
       <input type="text" id="Time" name="time2"><br><br>
+    </div>
       <button id="submit"> Add to Cart</button>
       </form>
       <script>

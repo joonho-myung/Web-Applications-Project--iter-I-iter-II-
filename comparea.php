@@ -3,7 +3,6 @@
 <head>
 	<title>Plan for Smart Service : Cart</title>
 	 <link rel="stylesheet" type="text/css" href="style.css">
-	 <link rel="stylesheet" type="text/css" href="css/contact.css">
    <link rel="stylesheet" type="text/css" href="service.css">
 </head>
 <div id="navbar">
@@ -16,24 +15,11 @@
 	<img alt="Facebook" src="https://www.charge.com/wp-content/uploads/2015/12/cart.png" class="thumbnail" width="50" height="50"></a>
 </div>
 
-<form action="" method="post">
-  <input type="radio" id="1" name="option" value="1">
-  <label for="male">Option 1</label>
-  <input type="radio" id="1" name="option" value="2">
-  <label for="female">Option 2</label>
-	<br>
-	<label for="fname">Enter Email to confirm:</label>
-	<input type="text" id="email" name="email"><br><br>
-  <button id="submit"> Submit</button>
-  </form>
+<div style="position:absolute; top:13.5%; right:97%">
+<p>Option 1 <br> Option 2</p>
+</div>
 
-
-
-
-<a href="cart.php" style="width:7%; position: absolute;bottom: 60% ; color: rgb(0,0,0) !important">Continue</a>
-</body>
-</html>
-
+<div style="position:absolute; top:5%; right:75%">
 <?php
 $servername = "localhost";
 $username = "root";
@@ -124,4 +110,23 @@ if ($conn->multi_query($sql) === TRUE) {
 
 
 		mysqli_close($conn);
-		?>
+ ?>
+</div>
+<div style="position:absolute; top:25%">
+<form action="" method="post">
+  <input type="radio" id="1" name="option" value="1">
+  <label for="male">Option 1</label>
+  <input type="radio" id="1" name="option" value="2">
+  <label for="female">Option 2</label>
+	<br>
+	<label for="fname">Enter Email to confirm:</label>
+	<input type="text" id="email" name="email"><br><br>
+  <button id="submit"> Submit</button>
+  </form>
+</div>
+
+
+
+<a href="cart.php" style="width:7%; position: absolute;bottom: 57% ; color: rgb(0,0,0) !important">Continue</a>
+</body>
+</html>

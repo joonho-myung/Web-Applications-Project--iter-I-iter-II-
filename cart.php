@@ -136,7 +136,7 @@ if ($conn->multi_query($sql) === TRUE) {}
         }
 echo "<br>";
 echo "<br>";
-						$sql = "SELECT * FROM Flower_table";
+						$sql = "SELECT * FROM Flower_table WHERE email =('$current_email')";
 						if($result = mysqli_query($conn, $sql)){
 						    if(mysqli_num_rows($result) > 0){
 						        echo "<table>";
@@ -158,7 +158,7 @@ echo "<br>";
                   }
                 }
 
-                $sql = "SELECT * FROM Coffee_table";
+                $sql = "SELECT * FROM Coffee_table WHERE email =('$current_email')";
     						if($result = mysqli_query($conn, $sql)){
     						    if(mysqli_num_rows($result) > 0){
     						        echo "<table>";

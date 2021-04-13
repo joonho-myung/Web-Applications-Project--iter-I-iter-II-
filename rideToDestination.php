@@ -37,16 +37,13 @@ $start =  $_POST['startloc'] ?? "";
 $end = $_POST['endloc'] ?? "";
 $date = $_POST['date'] ?? "";
 $time = $_POST['time'] ?? "";
+$email = $_POST['email'] ?? "";
 
-$sql = "INSERT INTO Ordertable (car_name,startloc, endloc, date_, time_,price)
-VALUES ('$car_name','$start','$end','$date','$time','$price')";
+$sql = "INSERT INTO Ordertable (car_name,startloc, endloc, date_, time_,price,email)
+VALUES ('$car_name','$start','$end','$date','$time','$price','$email')";
 
-if ($conn->multi_query($sql) === TRUE) {
+if ($conn->multi_query($sql) === TRUE) {}
 
-} else {
-   echo "<br>";
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
 mysqli_close($conn);
 ?>
 
@@ -75,7 +72,6 @@ mysqli_close($conn);
 
     	</style>
        <link rel="stylesheet" type="text/css" href="style.css">
-       <link rel="stylesheet" type="text/css" href="contact.css">
     </head>
     <body>
 
@@ -155,6 +151,8 @@ mysqli_close($conn);
     	<input type="text" id="Date" name="date"><br><br>
     	<label for="fname">Time:</label>
     	<input type="text" id="Time" name="time"><br><br>
+      <label for="fname">Email:</label>
+    	<input type="text" id="Time" name="email"><br><br>
       <button id="submit"> Add to Cart</button>
 </form>
     	<script>
@@ -171,58 +169,5 @@ mysqli_close($conn);
     			async
     		></script>
 
-
-
-        <!--Contact Us Popup Code -->
-        	<div class="form-popup" id="contactus">
-        				<div class="wrap-contact2">
-        					<form class="contact2-form">
-        						<span class="contact2-form-title">
-        							Contact Us
-        						</span>
-
-        						<div class="wrap-input2">
-        							<input class="input2" type="text" name="name">
-        							<span class="focus-input2" data-placeholder="NAME"></span>
-        						</div>
-
-        						<div class="wrap-input2">
-        							<input class="input2" type="text" name="email">
-        							<span class="focus-input2" data-placeholder="EMAIL"></span>
-        						</div>
-
-        						<div class="wrap-input2">
-        							<textarea class="input2" name="message"></textarea>
-        							<span class="focus-input2" data-placeholder="MESSAGE"></span>
-        						</div>
-
-        						<div class="container-contact2-form-btn">
-        							<div class="wrap-contact2-form-btn">
-        								<div class="contact2-form-bgbtn"></div>
-        								<button class="contact2-form-btn">
-        									Send Your Message
-        								</button>
-        							</div>
-        							<div class="wrap-contact2-form-btn">
-        								<div class="contact2-form-bgbtn"></div>
-        								<button class="contact2-form-btn" onclick="closeForm()">
-        									Close
-        								</button>
-        							</div>
-        						</div>
-        					</form>
-        				</div>
-
-        	</div>
-        		<script>
-
-        		function openForm() {
-        		  document.getElementById("contactus").style.display = "block";
-        		}
-
-        		function closeForm() {
-        		  document.getElementById("contactus").style.display = "none";
-        		}
-        		</script>
     </body>
     </html>

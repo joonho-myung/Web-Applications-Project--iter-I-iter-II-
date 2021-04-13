@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "project";
+$dbname = "userdb";
 
 try {
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -24,11 +24,7 @@ date_ VARCHAR(255),
 time_ VARCHAR(255)
 )";
 
-if (mysqli_query($conn, $sql)) {
-
-} else {
-
-}
+if (mysqli_query($conn, $sql)) {}
 
 $sql = "CREATE TABLE compareCoffee_table (
 coffee_id INT(6) UNSIGNED AUTO_INCREMENT UNIQUE,
@@ -41,11 +37,8 @@ date_ VARCHAR(255),
 time_ VARCHAR(255)
 )";
 
-if (mysqli_query($conn, $sql)) {
+if (mysqli_query($conn, $sql)) {}
 
-} else {
-
-}
 
 $flower1 =  $_POST['flower1'] ?? "";
 $store1 = $_POST['fstore1'] ?? "";
@@ -135,7 +128,7 @@ mysqli_close($conn);
 	<title>Plan for Smart Service : Ride to Deliver</title>
 
    <link rel="stylesheet" type="text/css" href="style.css">
-   <link rel="stylesheet" type="text/css" href="contact.css">
+
 	<style>
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>

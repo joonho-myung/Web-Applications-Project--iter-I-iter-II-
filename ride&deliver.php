@@ -43,9 +43,10 @@ $start =  $_POST['startloc'] ?? "";
 $end = $_POST['endloc'] ?? "";
 $date = $_POST['date'] ?? "";
 $time = $_POST['time'] ?? "";
+$email = $_POST['email'] ?? "";
 
 $sql = "INSERT INTO Flower_table (flower_name, store, price, startloc, endloc, date_, time_)
-VALUES ('$flower_name', '$store','$price', '$start','$end','$date','$time')";
+VALUES ('$flower_name', '$store','$price', '$start','$end','$date','$time', '$email')";
 
 if ($conn->multi_query($sql) === TRUE) {
 
@@ -77,8 +78,9 @@ $coffee_price = substr($coffee,17);
 $coffee_name = substr($coffee,0,17);
 
 
+
 $sql = "INSERT INTO Coffee_table (coffee_name, coffee_store, coffee_price, startloc, endloc, date_, time_)
-VALUES ('$coffee_name', '$coffee_store','$coffee_price', '$start','$end','$date','$time')";
+VALUES ('$coffee_name', '$coffee_store','$coffee_price', '$start','$end','$date','$time','$email')";
 
 if ($conn->multi_query($sql) === TRUE) {
 
@@ -96,8 +98,7 @@ mysqli_close($conn);
 <head>
 	<title>Plan for Smart Service : Ride to Deliver</title>
 
-   <link rel="stylesheet" type="text/css" href="main.css">
-   <link rel="stylesheet" type="text/css" href="css/contact.css">
+   <link rel="stylesheet" type="text/css" href="style.css">
 	<style>
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -172,11 +173,7 @@ mysqli_close($conn);
     	<input type="text" id="Time" name="time"><br><br>
 
 
-      <input type="submit" value="Submit">
-	</form>
-
-	<br><br><br>
-	<form action="" method="post">
+	<div style="position:absolute; right:45%; top:9%">
     <p> Which Coffee do you want? </p>
 	  <label for="coffee">Choose your Coffee</label>
 	  <select name="coffee" id="coffee">
@@ -206,9 +203,11 @@ mysqli_close($conn);
     	<input type="text" id="Date" name="date"><br><br>
     	<label for="fname">Time:</label>
     	<input type="text" id="Time" name="time"><br><br>
-
-
+      <label for="fname">Email:</label>
+      <input type="text" id="Time" name="email"><br><br>
+</div>
       <input type="submit" value="Submit">
+
 	</form>
 
 
@@ -265,56 +264,5 @@ mysqli_close($conn);
 	async
 ></script>
 
-  <!--Contact Us Popup Code -->
-  	<div class="form-popup" id="contactus">
-  				<div class="wrap-contact2">
-  					<form class="contact2-form">
-  						<span class="contact2-form-title">
-  							Contact Us
-  						</span>
-
-  						<div class="wrap-input2">
-  							<input class="input2" type="text" name="name">
-  							<span class="focus-input2" data-placeholder="NAME"></span>
-  						</div>
-
-  						<div class="wrap-input2">
-  							<input class="input2" type="text" name="email">
-  							<span class="focus-input2" data-placeholder="EMAIL"></span>
-  						</div>
-
-  						<div class="wrap-input2">
-  							<textarea class="input2" name="message"></textarea>
-  							<span class="focus-input2" data-placeholder="MESSAGE"></span>
-  						</div>
-
-  						<div class="container-contact2-form-btn">
-  							<div class="wrap-contact2-form-btn">
-  								<div class="contact2-form-bgbtn"></div>
-  								<button class="contact2-form-btn">
-  									Send Your Message
-  								</button>
-  							</div>
-  							<div class="wrap-contact2-form-btn">
-  								<div class="contact2-form-bgbtn"></div>
-  								<button class="contact2-form-btn" onclick="closeForm()">
-  									Close
-  								</button>
-  							</div>
-  						</div>
-  					</form>
-  				</div>
-
-  	</div>
-  		<script>
-
-  		function openForm() {
-  		  document.getElementById("contactus").style.display = "block";
-  		}
-
-  		function closeForm() {
-  		  document.getElementById("contactus").style.display = "none";
-  		}
-  		</script>
 </body>
 </html>
