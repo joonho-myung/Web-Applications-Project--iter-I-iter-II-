@@ -134,8 +134,8 @@ mysqli_close($conn);
 <head>
 	<title>Plan for Smart Service : Ride to Deliver</title>
 
-   <link rel="stylesheet" type="text/css" href="main.css">
-   <link rel="stylesheet" type="text/css" href="css/contact.css">
+   <link rel="stylesheet" type="text/css" href="style.css">
+   <link rel="stylesheet" type="text/css" href="contact.css">
 	<style>
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>

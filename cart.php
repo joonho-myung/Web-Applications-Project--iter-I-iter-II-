@@ -2,8 +2,8 @@
 <html>
 <head>
 	<title>Plan for Smart Service : Cart</title>
-	 <link rel="stylesheet" type="text/css" href="main.css">
-	 <link rel="stylesheet" type="text/css" href="css/contact.css">
+	 <link rel="stylesheet" type="text/css" href="style.css">
+	 <link rel="stylesheet" type="text/css" href="contact.css">
 </head>
 <div id="navbar">
 	<a href="testing.php" style="width:7%; position: absolute; right: 22%; color: rgb(0,0,0) !important">Home</a>
@@ -77,7 +77,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "project";
+$dbname = "userdb";
 
 try {
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -94,9 +94,22 @@ if ($conn->multi_query($sql) === TRUE) {}
 		$sql = "DROP TABLE compareCoffee_table";
 		if ($conn->multi_query($sql) === TRUE) {}
 
+
+			$sql = "SELECT user FROM current";
+			if($result = mysqli_query($conn, $sql)){
+					if(mysqli_num_rows($result) > 0){
+							while($row = mysqli_fetch_array($result)){
+								$current_email = $row['user'];
+
+							}
+							mysqli_free_result($result);
+						}
+					}
+
+
     echo "<br>";
     echo "<br>";
-		$sql = "SELECT * FROM ordertable";
+		$sql = "SELECT * FROM ordertable WHERE email =('$current_email')";
 		if($result = mysqli_query($conn, $sql)){
 		    if(mysqli_num_rows($result) > 0){
 		        echo "<table>";

@@ -21,6 +21,9 @@
   <label for="male">Option 1</label>
   <input type="radio" id="1" name="option" value="2">
   <label for="female">Option 2</label>
+	<br>
+	<label for="fname">Enter Email to confirm:</label>
+	<input type="text" id="email" name="email"><br><br>
   <button id="submit"> Submit</button>
   </form>
 
@@ -32,7 +35,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "project";
+$dbname = "userdb";
 
 try {
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -50,6 +53,7 @@ catch(PDOException $e)
     date_ VARCHAR(255),
     time_ VARCHAR(255),
     price VARCHAR(255),
+		email VARCHAR(255),
     reg_date TIMESTAMP
     )";
     if (mysqli_query($conn, $sql)) {
@@ -65,6 +69,7 @@ catch(PDOException $e)
     date_ VARCHAR(255),
     time_ VARCHAR(255),
     price VARCHAR(255),
+		email VARCHAR(255),
     reg_date TIMESTAMP
     )";
     if (mysqli_query($conn, $sql)) {
@@ -124,6 +129,7 @@ echo "<br>";
 echo "<br>";
 
 $save = $_POST['option'] ?? "";
+$email = $_POST['email'] ?? "";
 
 if ($save === "1"){
 $sql = "INSERT INTO Flower_table(flower_name, store, price, startloc, endloc, date_, time_)
@@ -131,12 +137,16 @@ SELECT flower_name, store, price, startloc, endloc, date_, time_
 FROM CompareFlower_table
 WHERE flower_id = 3";
 if ($conn->multi_query($sql) === TRUE) {}
+	$sql = "UPDATE Ordertable SET email = ('$email')WHERE email IS NULL";
+	if ($conn->multi_query($sql) === TRUE) {}
 
 $sql = "INSERT INTO Coffee_table(coffee_name, coffee_store, coffee_price, startloc, endloc, date_, time_)
 SELECT coffee_name, coffee_store, coffee_price, startloc, endloc, date_, time_
 FROM CompareCoffee_table
 WHERE coffee_id = 3";
 if ($conn->multi_query($sql) === TRUE) {}
+	$sql = "UPDATE Ordertable SET email = ('$email')WHERE email IS NULL";
+	if ($conn->multi_query($sql) === TRUE) {}
 }
 elseif ($save ==="2"){
   $sql = "INSERT INTO Flower_table(flower_name, store, price, startloc, endloc, date_, time_)
@@ -144,12 +154,16 @@ elseif ($save ==="2"){
   FROM CompareFlower_table
   WHERE flower_id =4";
   if ($conn->multi_query($sql) === TRUE) {}
+		$sql = "UPDATE Ordertable SET email = ('$email')";
+		if ($conn->multi_query($sql) === TRUE) {}
 
   $sql = "INSERT INTO Coffee_table(coffee_name, coffee_store, coffee_price, startloc, endloc, date_, time_)
   SELECT coffee_name, coffee_store, coffee_price, startloc, endloc, date_, time_
   FROM CompareCoffee_table
   WHERE coffee_id = 4";
   if ($conn->multi_query($sql) === TRUE) {}
+		$sql = "UPDATE Ordertable SET email = ('$email')";
+		if ($conn->multi_query($sql) === TRUE) {}
 
 }
 

@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "project";
+$dbname = "userdb";
 
 try {
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -74,8 +74,8 @@ mysqli_close($conn);
     		}
 
     	</style>
-       <link rel="stylesheet" type="text/css" href="main.css">
-       <link rel="stylesheet" type="text/css" href="css/contact.css">
+       <link rel="stylesheet" type="text/css" href="style.css">
+       <link rel="stylesheet" type="text/css" href="contact.css">
     </head>
     <body>
 

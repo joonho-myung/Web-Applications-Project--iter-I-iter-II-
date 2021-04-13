@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "project";
+$dbname = "userdb";
 
 try {
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -23,11 +23,7 @@ time_ VARCHAR(255),
 price VARCHAR(255),
 reg_date TIMESTAMP
 )";
-if (mysqli_query($conn, $sql)) {
-
-} else {
-
-}
+if (mysqli_query($conn, $sql)) {}
 
 
 $car1 = $_POST['car1'] ?? "";
@@ -92,8 +88,8 @@ mysqli_close($conn);
     		}
 
     	</style>
-       <link rel="stylesheet" type="text/css" href="main.css">
-       <link rel="stylesheet" type="text/css" href="css/contact.css">
+       <link rel="stylesheet" type="text/css" href="style.css">
+       <link rel="stylesheet" type="text/css" href="contact.css">
     </head>
     <body>
 

@@ -63,7 +63,6 @@
       $smt = $pdo->prepare($sql);
       $smt->execute(array($fname,$lname,$email,md5($passw),$pnum,$addy)); //execute the query
 
-
       mysqli_close($conn);
 
       header("Location: testing.php");
@@ -71,7 +70,7 @@
     ?>
 
     <div>
-      <form action=signup.php method="post">
+      <form action="signup.php" method="post">
       <label for="fname">First Name:</label>
       <input type="text" name="fname"><br><br>
       <label for="lname">Last Name:</label>

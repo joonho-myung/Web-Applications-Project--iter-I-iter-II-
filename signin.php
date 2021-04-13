@@ -43,6 +43,19 @@
              header("Location: testing.php");
 
           }
+
+          $sql = "CREATE TABLE current (
+          userid INT(6) UNSIGNED AUTO_INCREMENT UNIQUE,
+          user VARCHAR(255) NOT NULL
+          )";
+
+          if (mysqli_query($conn, $sql)) {}
+            $sql = "INSERT INTO current (user)
+            VALUES ('$email')";
+            if ($conn->multi_query($sql) === TRUE) {}
+
+
+
           echo " login unsuccessful ";
 
         }
