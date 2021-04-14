@@ -74,18 +74,24 @@
     <div>
       <form action="signup.php" method="post">
       <label for="fname">First Name:</label>
-      <input type="text" name="fname"><br><br>
+      <input type="text" name="fname" required><br><br>
       <label for="lname">Last Name:</label>
-      <input type="text" name="lname"><br><br>
+      <input type="text" name="lname" required><br><br>
       <label for="email">Email:</label>
-      <input type="text" name="email"><br><br>
+      <input type="text" name="email" required><br><br>
       <label for="pass">Password:</label>
-      <input type="text" name="pass"><br><br>
+      <input type="text" name="pass" required><br><br>
       <label for="pnum">Phone Number:</label>
-      <input type="text" name="pnum"><br><br>
+      <input type="text" name="pnum" required><br><br>
       <label for="addy">Address:</label>
-      <input type="text" name="addy"><br><br>
-      <input type="submit" name="signup" value="signup">
+      <input type="text" name="addy" required><br><br>
+      <input type="submit" name="signup" value="Sign Up">
+      <a href="signin.php">
+        <input type="button" value="Sign In" />
+      </a>
+      <a href="testing.php">
+        <input type="button" value="Back" />
+      </a>
       </form>
     </div>
 
