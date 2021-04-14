@@ -2,9 +2,9 @@
 <html ng-app="myApp">
 <head>
 	<title>Plan for Smart Service</title>
-	    <link rel="stylesheet" href="style.css">
-			<link rel="stylesheet" href="contact.css">
 
+		<link rel="stylesheet" href="style.css">
+			<link rel="stylesheet" href="contact.css">
 
 </head>
 
@@ -60,8 +60,8 @@
 			echo '<a href="logoff.php" style="font-size: 15px;width:7%;  position: absolute;top:9% ;right: -2%; color: rgb(0,0,0) !important"> Logout</a>';
 		}else{
 			echo'
-			<a href="signup.php" style="font-size: 15px;width:7%;  position: absolute;top:9% ;right: 2%; color: rgb(0,0,0) !important"> Sign up</a>
-			<a href="signin.php" style="font-size: 15px;width:7%;  position: absolute;top:9% ;right: -2%; color: rgb(0,0,0) !important"> Sign in</a>
+			<a href="#!signup" style="font-size: 15px;width:7%;  position: absolute;top:9% ;right: 2%; color: rgb(0,0,0) !important"> Sign up</a>
+			<a href="#!signin" style="font-size: 15px;width:7%;  position: absolute;top:9% ;right: -2%; color: rgb(0,0,0) !important"> Sign in</a>
 			';
 		}
 		?>

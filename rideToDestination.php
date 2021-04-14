@@ -52,7 +52,10 @@ mysqli_close($conn);
     <head>
     	<title>Plan for Smart Service : Ride to Destination</title>
     	<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    	<style type="text/css">
+		<link rel="stylesheet" href="style.css">
+			<link rel="stylesheet" href="contact.css">
+
+		<style type="text/css">
     	#map {
     	        height: 100%;
     	      }
@@ -75,15 +78,10 @@ mysqli_close($conn);
     </head>
     <body>
 
-      <div id="navbar">
-    		<a href="testing.php" style="width:7%; position: absolute; right: 22%; color: rgb(0,0,0) !important">Home</a>
-    		<a href="database.php" style="width:7%; position: absolute; right: 17% ;color: rgb(0,0,0) !important">Database</a>
-    		<a onclick="openForm()" style="width:7%; position: absolute; right: 11%; color: rgb(0,0,0) !important"> Contact Us</a>
-    		<a href="" style="width:7%; position: absolute; right: 5%; color: rgb(0,0,0) !important"> Reviews</a>
-    		<a href="testing.php#!/services" style="width:7%;  position: absolute; right: 0%; color: rgb(0,0,0) !important"> Service</a>
-        <a href="cart.php">
+     
+        <a href="#!database">
     		<img alt="Facebook" src="https://www.charge.com/wp-content/uploads/2015/12/cart.png" class="thumbnail" width="50" height="50"></a>
-    	</div>
+
 
 
     	<script>

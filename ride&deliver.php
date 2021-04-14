@@ -130,15 +130,10 @@ mysqli_close($conn);
 	</style>
 </head>
 <body>
-  <div id="navbar">
-    <a href="testing.php" style="width:7%; position: absolute; right: 22%; color: rgb(0,0,0) !important">Home</a>
-    <a href="database.php" style="width:7%; position: absolute; right: 17% ;color: rgb(0,0,0) !important">Database</a>
-    <a onclick="openForm()" style="width:7%; position: absolute; right: 11%; color: rgb(0,0,0) !important"> Contact Us</a>
-    <a href="" style="width:7%; position: absolute; right: 5%; color: rgb(0,0,0) !important"> Reviews</a>
-    <a href="testing.php#!/services" style="width:7%;  position: absolute; right: 0%; color: rgb(0,0,0) !important"> Service</a>
-    <a href="cart.php">
+  
+    <a href="#!database">
     <img alt="Facebook" src="https://www.charge.com/wp-content/uploads/2015/12/cart.png" class="thumbnail" width="50" height="50"></a>
-  </div>
+
 
 	<form action="" method="post">
 		<p> Which Flower do you want? </p>
@@ -173,7 +168,7 @@ mysqli_close($conn);
     	<input type="text" id="Time" name="time"><br><br>
 
 
-	<div style="position:absolute; right:45%; top:9%">
+	<div style="position:absolute; right:45%; top:16%">
     <p> Which Coffee do you want? </p>
 	  <label for="coffee">Choose your Coffee</label>
 	  <select name="coffee" id="coffee">
