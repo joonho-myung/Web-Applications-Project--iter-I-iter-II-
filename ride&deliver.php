@@ -1,99 +1,3 @@
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "userdb";
-
-try {
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    //echo "Connected successfully";
-    }
-catch(PDOException $e)
-    {
-    echo "Connection failed: " . $e->getMessage();
-    }
-
-$sql = "CREATE TABLE Flower_table (
-flower_id INT(6) UNSIGNED AUTO_INCREMENT UNIQUE,
-flower_name VARCHAR(255) NOT NULL,
-store VARCHAR(255) NOT NULL,
-price VARCHAR(255) NOT NULL,
-startloc VARCHAR(255) NOT NULL,
-endloc VARCHAR(255) NOT NULL,
-date_ VARCHAR(255),
-time_ VARCHAR(255)
-)";
-
-if (mysqli_query($conn, $sql)) {
-
-} else {
-
-}
-
-$flower = " ";
-$store = " ";
-
-
-$flower =  $_POST['flower'] ?? "";
-$store = $_POST['store'] ?? "";
-$price = substr($flower,8);
-$flower_name = substr($flower,0,8);
-
-$start =  $_POST['startloc'] ?? "";
-$end = $_POST['endloc'] ?? "";
-$date = $_POST['date'] ?? "";
-$time = $_POST['time'] ?? "";
-$email = $_POST['email'] ?? "";
-
-$sql = "INSERT INTO Flower_table (flower_name, store, price, startloc, endloc, date_, time_)
-VALUES ('$flower_name', '$store','$price', '$start','$end','$date','$time', '$email')";
-
-if ($conn->multi_query($sql) === TRUE) {
-
-
-} else {
-
-}
-
-$sql = "CREATE TABLE Coffee_table (
-coffee_id INT(6) UNSIGNED AUTO_INCREMENT UNIQUE,
-coffee_name VARCHAR(255) NOT NULL,
-coffee_store VARCHAR(255) NOT NULL,
-coffee_price VARCHAR(255) NOT NULL,
-startloc VARCHAR(255) NOT NULL,
-endloc VARCHAR(255) NOT NULL,
-date_ VARCHAR(255),
-time_ VARCHAR(255)
-)";
-
-if (mysqli_query($conn, $sql)) {
-
-} else {
-
-}
-
-$coffee =  $_POST['coffee'] ?? "";
-$coffee_store = $_POST['coffee_store'] ?? "";
-$coffee_price = substr($coffee,17);
-$coffee_name = substr($coffee,0,17);
-
-
-
-$sql = "INSERT INTO Coffee_table (coffee_name, coffee_store, coffee_price, startloc, endloc, date_, time_)
-VALUES ('$coffee_name', '$coffee_store','$coffee_price', '$start','$end','$date','$time','$email')";
-
-if ($conn->multi_query($sql) === TRUE) {
-
-
-} else {
-
-}
-mysqli_close($conn);
-
-?>
-
-<br>
-
 <html>
 <head>
 	<title>Plan for Smart Service : Ride to Deliver</title>
@@ -130,12 +34,84 @@ mysqli_close($conn);
 	</style>
 </head>
 <body>
-  
-    <a href="#!database">
-    <img alt="Facebook" src="https://www.charge.com/wp-content/uploads/2015/12/cart.png" class="thumbnail" width="50" height="50"></a>
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "userdb";
+
+if(isset($_POST['addtocart'])){
+try {
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    }
+catch(PDOException $e)
+    {
+    }
+
+$sql = "CREATE TABLE Flower_table (
+flower_id INT(6) UNSIGNED AUTO_INCREMENT UNIQUE,
+flower_name VARCHAR(255) NOT NULL,
+store VARCHAR(255) NOT NULL,
+price VARCHAR(255) NOT NULL,
+startloc VARCHAR(255) NOT NULL,
+endloc VARCHAR(255) NOT NULL,
+date_ VARCHAR(255),
+email VARCHAR(255) NOT NULL,
+time_ VARCHAR(255)
+)";
+
+if (mysqli_query($conn, $sql)) {}
 
 
-	<form action="" method="post">
+$flower =  $_POST['flower'] ?? "";
+$store = $_POST['store'] ?? "";
+$price = substr($flower,8);
+$flower_name = substr($flower,0,8);
+
+$start =  $_POST['startloc'] ?? "";
+$end = $_POST['endloc'] ?? "";
+$date = $_POST['date'] ?? "";
+$time = $_POST['time'] ?? "";
+$email = $_POST['email'] ?? "";
+
+$sql = "INSERT INTO Flower_table (flower_name, store, price, startloc, endloc, date_, email, time_)
+VALUES ('$flower_name', '$store','$price', '$start','$end','$date', '$email','$time')";
+
+if ($conn->multi_query($sql) === TRUE) {}
+
+$sql = "CREATE TABLE Coffee_table (
+coffee_id INT(6) UNSIGNED AUTO_INCREMENT UNIQUE,
+coffee_name VARCHAR(255) NOT NULL,
+coffee_store VARCHAR(255) NOT NULL,
+coffee_price VARCHAR(255) NOT NULL,
+startloc VARCHAR(255) NOT NULL,
+endloc VARCHAR(255) NOT NULL,
+date_ VARCHAR(255),
+email VARCHAR(255) NOT NULL.
+time_ VARCHAR(255)
+)";
+
+if (mysqli_query($conn, $sql)) {}
+
+$coffee =  $_POST['coffee'] ?? "";
+$coffee_store = $_POST['coffee_store'] ?? "";
+$coffee_price = substr($coffee,17);
+$coffee_name = substr($coffee,0,17);
+
+$sql = "INSERT INTO Coffee_table (coffee_name, coffee_store, coffee_price, startloc, endloc, date_, email, time_)
+VALUES ('$coffee_name', '$coffee_store','$coffee_price', '$start','$end','$date','$email','$time')";
+
+if ($conn->multi_query($sql) === TRUE) {
+
+
+} else {
+
+}
+mysqli_close($conn);
+header("Location: testing.php#!/database");
+}
+?>
+	<form action="ride&deliver.php" method="post">
 		<p> Which Flower do you want? </p>
 	  <label for="flower">Choose your flowers</label>
 	  <select name="flower" id="flower">
@@ -201,7 +177,7 @@ mysqli_close($conn);
       <label for="fname">Email:</label>
       <input type="text" id="Time" name="email"><br><br>
 </div>
-      <input type="submit" value="Submit">
+      <input type="submit" name="addtocart" value="Add To Cart">
 
 	</form>
 

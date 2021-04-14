@@ -4,6 +4,7 @@ $username = "root";
 $password = "";
 $dbname = "userdb";
 
+if(isset($_POST['addtocart'])){
 try {
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -21,7 +22,7 @@ endloc VARCHAR(255) NOT NULL,
 date_ VARCHAR(255),
 time_ VARCHAR(255),
 price VARCHAR(255),
-reg_date TIMESTAMP
+email VARCHAR(255)
 )";
 if (mysqli_query($conn, $sql)) {}
 
@@ -33,9 +34,11 @@ $start1 =  $_POST['startloc1'] ?? "";
 $end1 = $_POST['endloc1'] ?? "";
 $date1 = $_POST['date1'] ?? "";
 $time1 = $_POST['time1'] ?? "";
+$email = $_POST['email'] ?? "";
 
-$sql = "INSERT INTO Comparetablea (car_name,startloc, endloc, date_, time_,price)
-VALUES ('$car_name1','$start1','$end1','$date1','$time1','$price1')";
+
+$sql = "INSERT INTO Comparetablea (car_name,startloc, endloc, date_, time_,price,email)
+VALUES ('$car_name1','$start1','$end1','$date1','$time1','$price1', '$email')";
 
 if ($conn->multi_query($sql) === TRUE) {
 
@@ -52,8 +55,8 @@ $end2 = $_POST['endloc2'] ?? "";
 $date2 = $_POST['date2'] ?? "";
 $time2 = $_POST['time2'] ?? "";
 
-$sql = "INSERT INTO Comparetablea (car_name,startloc, endloc, date_, time_,price)
-VALUES ('$car_name2','$start2','$end2','$date2','$time2','$price2')";
+$sql = "INSERT INTO Comparetablea (car_name,startloc, endloc, date_, time_,price,email)
+VALUES ('$car_name2','$start2','$end2','$date2','$time2','$price2','$email')";
 
 if ($conn->multi_query($sql) === TRUE) {
 
@@ -62,6 +65,8 @@ if ($conn->multi_query($sql) === TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 mysqli_close($conn);
+header("Location: testing.php#!/comparea");
+}
 ?>
 
 
@@ -91,11 +96,6 @@ mysqli_close($conn);
        <link rel="stylesheet" type="text/css" href="style.css";>
     </head>
     <body>
-
-     
-        <a href="#!comparea">
-    		<img alt="Facebook" src="https://www.charge.com/wp-content/uploads/2015/12/cart.png" class="thumbnail" width="50" height="50"></a>
-
 
     	<script>
     	    function initMap() {
@@ -145,7 +145,8 @@ mysqli_close($conn);
     <img src="https://cars.usnews.com/static/images/Auto/izmo/i94428619/2019_toyota_camry_angularfront.jpg" alt="2019 camry" width="500">
 
     <br>
-<form action="" method="post">
+<form action="ridegreena.php" method="post">
+  <div style="position:absolute;left:1%">
       <input type="radio" id="Wrx" name="car1" value="wrx      $30">
       <label for="male">2020 Subaru Wrx ($30)</label>
       <input type="radio" id="Civic" name="car1" value="civic   $10">
@@ -162,8 +163,9 @@ mysqli_close($conn);
     	<input type="text" id="Date" name="date1"><br><br>
     	<label for="fname">Time:</label>
     	<input type="text" id="Time" name="time1"><br><br>
-
-<div style="position:absolute; right:40%; top:46%">
+      <input type="submit" name="addtocart" value="Add To Cart">
+</div>
+<div style="position:absolute; right:39%; top:52%">
       <input type="radio" id="Wrx" name="car2" value="wrx      $30">
       <label for="male">2020 Subaru Wrx ($30)</label>
       <input type="radio" id="Civic" name="car2" value="civic   $10">
@@ -180,14 +182,11 @@ mysqli_close($conn);
       <input type="text" id="Date" name="date2"><br><br>
       <label for="fname">Time:</label>
       <input type="text" id="Time" name="time2"><br><br>
+      <label for="fname">Email:</label>
+      <input type="text" id="email" name="email"><br><br>
     </div>
-      <button id="submit"> Add to Cart</button>
+
       </form>
-      <script>
-      document.getElementById("submit").addEventListener("click",function(){
-          alert("Order Added to Cart");
-        });
-      </script>
 
     </div>
     		<div id="map"></div>
@@ -198,47 +197,5 @@ mysqli_close($conn);
     			async
     		></script>
 
-
-        <script>
-      	    function initMap() {
-      	      const directionsService = new google.maps.DirectionsService();
-      	      const directionsRenderer = new google.maps.DirectionsRenderer();
-      	      const map = new google.maps.Map(document.getElementById("map"), {
-      	        zoom: 7,
-      	        center: { lat: 43.6532, lng: -79.3832 },
-      	      });
-      	      directionsRenderer.setMap(map);
-
-      	      const onChangeHandler = function () {
-      	        calculateAndDisplayRoute(directionsService, directionsRenderer);
-      	      };
-      				document
-      	          .getElementById("start")
-      	          .addEventListener("change", onChangeHandler);
-      	        document
-      	          .getElementById("end")
-      	          .addEventListener("change", onChangeHandler);
-      	    }
-
-      	    function calculateAndDisplayRoute(directionsService, directionsRenderer) {
-      	      directionsService.route(
-      	        {
-      	          origin: {
-      	            query: document.getElementById("start").value,
-      	          },
-      	          destination: {
-      	            query: document.getElementById("end").value,
-      	          },
-      	          travelMode: google.maps.TravelMode.DRIVING,
-      	        },
-      	        (response, status) => {
-      	          if (status === "OK") {
-      	            directionsRenderer.setDirections(response);
-      	          }
-      	        }
-      	      );
-      	    }
-      	  </script>
-      	<div>
     </body>
     </html>

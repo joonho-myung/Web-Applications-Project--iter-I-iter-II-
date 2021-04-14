@@ -6,21 +6,16 @@
    <link rel="stylesheet" type="text/css" href="service.css">
 </head>
 
-	<a href="#!database">
-	<img alt="Facebook" src="https://www.charge.com/wp-content/uploads/2015/12/cart.png" class="thumbnail" width="50" height="50"></a>
-
-
 <div style="position:absolute; top:13.5%; right:97%">
 <p>Option 1 <br> Option 2</p>
 </div>
 
-<div style="position:absolute; top:5%; right:75%">
+<div style="position:absolute; top:12%; right:74%">
 <?php
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "userdb";
-
 try {
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -29,7 +24,8 @@ catch(PDOException $e)
     {
 
     }
-    $sql = "CREATE TABLE Ordertable (
+
+		$sql = "CREATE TABLE Ordertable (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     car_name VARCHAR(10) NOT NULL,
     startloc VARCHAR(255) NOT NULL,
@@ -37,14 +33,10 @@ catch(PDOException $e)
     date_ VARCHAR(255),
     time_ VARCHAR(255),
     price VARCHAR(255),
-		email VARCHAR(255),
-    reg_date TIMESTAMP
+		email VARCHAR(255) IS NULL
     )";
     if (mysqli_query($conn, $sql)) {}
 
-
-    echo "<br>";
-    echo "<br>";
 		$sql = "SELECT * FROM comparetablea";
 		if($result = mysqli_query($conn, $sql)){
 		    if(mysqli_num_rows($result) > 0){
@@ -72,51 +64,51 @@ catch(PDOException $e)
         }
 echo "<br>";
 echo "<br>";
+mysqli_close($conn);
+
+if(isset($_POST['addtocart'])){
+try {
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    }
+catch(PDOException $e)
+    {
+
+    }
+
 
 $save = $_POST['option'] ?? "";
-$email = $_POST['email'] ?? "";
+
 
 if ($save === "1"){
 
-$sql = "INSERT INTO Ordertable(car_name,startloc, endloc, date_, time_,price)
-SELECT car_name,startloc, endloc, date_, time_,price
+$sql = "INSERT INTO Ordertable(car_name,startloc, endloc, date_, time_,price,email)
+SELECT car_name,startloc, endloc, date_, time_,price,email
 FROM Comparetablea
-WHERE id = 3";
-if ($conn->multi_query($sql) === TRUE) {}
-$sql = "UPDATE Ordertable SET email = ('$email') WHERE email IS NULL";
+WHERE id = 1";
 if ($conn->multi_query($sql) === TRUE) {}
 }
 elseif ($save ==="2"){
-  $sql = "INSERT INTO Ordertable(car_name,startloc, endloc, date_, time_,price)
-  SELECT car_name,startloc, endloc, date_, time_,price
+  $sql = "INSERT INTO Ordertable(car_name,startloc, endloc, date_, time_,price,email)
+  SELECT car_name,startloc, endloc, date_, time_,price,email
   FROM Comparetablea
-  WHERE id =4";
+  WHERE id =2";
 	if ($conn->multi_query($sql) === TRUE) {}
-	$sql = "UPDATE Ordertable SET email =('$email') WHERE email IS NULL";
-	if ($conn->multi_query($sql) === TRUE) {}
-
 }
-if ($conn->multi_query($sql) === TRUE) {
-
-} else {
-   echo "<br>";
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
 
 		mysqli_close($conn);
+		header("Location: testing.php#!/database");
+	}
  ?>
 </div>
 <div style="position:absolute; top:25%">
-<form action="" method="post">
+<form action="comparea.php" method="post">
   <input type="radio" id="1" name="option" value="1">
   <label for="male">Option 1</label>
   <input type="radio" id="1" name="option" value="2">
   <label for="female">Option 2</label>
 	<br>
-	<label for="fname">Enter Email to confirm:</label>
-	<input type="text" id="email" name="email"><br><br>
-  <button id="submit"> Submit</button>
+  <input type="submit" name="addtocart" value="Add To Cart">
   </form>
 </div>
 

@@ -4,6 +4,7 @@ $username = "root";
 $password = "";
 $dbname = "userdb";
 
+if(isset($_POST['addtocart'])){
 try {
     $conn = new mysqli($servername, $username, $password, $dbname);
     //echo "Connected successfully";
@@ -21,7 +22,8 @@ price VARCHAR(255) NOT NULL,
 startloc VARCHAR(255) NOT NULL,
 endloc VARCHAR(255) NOT NULL,
 date_ VARCHAR(255),
-time_ VARCHAR(255)
+time_ VARCHAR(255),
+email VARCHAR (255)
 )";
 
 if (mysqli_query($conn, $sql)) {}
@@ -34,7 +36,8 @@ coffee_price VARCHAR(255) NOT NULL,
 startloc VARCHAR(255) NOT NULL,
 endloc VARCHAR(255) NOT NULL,
 date_ VARCHAR(255),
-time_ VARCHAR(255)
+time_ VARCHAR(255),
+email VARCHAR (255)
 )";
 
 if (mysqli_query($conn, $sql)) {}
@@ -48,9 +51,10 @@ $start1 =  $_POST['fstartloc1'] ?? "";
 $end1 = $_POST['fendloc1'] ?? "";
 $date1 = $_POST['fdate1'] ?? "";
 $time1 = $_POST['ftime1'] ?? "";
+$email = $_POST['email'] ?? "";
 
-$sql = "INSERT INTO compareFlower_table (flower_name, store, price, startloc, endloc, date_, time_)
-VALUES ('$flower_name1', '$store1','$price1', '$start1','$end1','$date1','$time1')";
+$sql = "INSERT INTO compareFlower_table (flower_name, store, price, startloc, endloc, date_, time_,email)
+VALUES ('$flower_name1', '$store1','$price1', '$start1','$end1','$date1','$time1','$email')";
 
 if ($conn->multi_query($sql) === TRUE) {
 
@@ -69,8 +73,8 @@ $coffee_date1 = $_POST['cdate1'] ?? "";
 $coffee_time1 = $_POST['ctime1'] ?? "";
 
 
-$sql = "INSERT INTO compareCoffee_table (coffee_name, coffee_store, coffee_price, startloc, endloc, date_, time_)
-VALUES ('$coffee_name1', '$coffee_store1','$coffee_price1', '$start1','$end1','$date1','$time1')";
+$sql = "INSERT INTO compareCoffee_table (coffee_name, coffee_store, coffee_price, startloc, endloc, date_, time_,email)
+VALUES ('$coffee_name1', '$coffee_store1','$coffee_price1', '$start1','$end1','$date1','$time1','$email')";
 
 if ($conn->multi_query($sql) === TRUE) {
 
@@ -88,8 +92,8 @@ $end2 = $_POST['fendloc2'] ?? "";
 $date2 = $_POST['fdate2'] ?? "";
 $time2 = $_POST['ftime2'] ?? "";
 
-$sql = "INSERT INTO compareFlower_table (flower_name, store, price, startloc, endloc, date_, time_)
-VALUES ('$flower_name2', '$store2','$price2', '$start2','$end2','$date2','$time2')";
+$sql = "INSERT INTO compareFlower_table (flower_name, store, price, startloc, endloc, date_, time_,email)
+VALUES ('$flower_name2', '$store2','$price2', '$start2','$end2','$date2','$time2','$email')";
 
 if ($conn->multi_query($sql) === TRUE) {
 
@@ -108,17 +112,14 @@ $coffee_date2 = $_POST['cdate2'] ?? "";
 $coffee_time2 = $_POST['ctime2'] ?? "";
 
 
-$sql = "INSERT INTO compareCoffee_table (coffee_name, coffee_store, coffee_price, startloc, endloc, date_, time_)
-VALUES ('$coffee_name2', '$coffee_store2','$coffee_price2', '$start2','$end2','$date2','$time2')";
+$sql = "INSERT INTO compareCoffee_table (coffee_name, coffee_store, coffee_price, startloc, endloc, date_, time_,email)
+VALUES ('$coffee_name2', '$coffee_store2','$coffee_price2', '$start2','$end2','$date2','$time2','$email')";
 
-if ($conn->multi_query($sql) === TRUE) {
-
-
-} else {
-
-}
+if ($conn->multi_query($sql) === TRUE) {}
 mysqli_close($conn);
 
+header("Location: testing.php#!/compareb");
+}
 ?>
 
 <br>
@@ -161,10 +162,7 @@ mysqli_close($conn);
 </head>
 <body>
 
-    <a href="#!compareb">
-    <img alt="Facebook" src="https://www.charge.com/wp-content/uploads/2015/12/cart.png" class="thumbnail" width="50" height="50"></a>
-
-	<form action="" method="post">
+	<form action="ridegreenb.php" method="post">
     <div>
 		<p> Which Flower do you want? </p>
 	  <label for="flower">Choose your flowers</label>
@@ -286,9 +284,11 @@ mysqli_close($conn);
       	<input type="text" id="Date" name="cdate2"><br><br>
       	<label for="fname">Time:</label>
       	<input type="text" id="Time" name="ctime2"><br><br>
+        <label for="fname">Email:</label>
+      	<input type="text" id="email" name="email"><br><br>
 </div>
 
-      <input type="submit" value="Submit">
+        <input type="submit" name="addtocart" value="Add To Cart">
 	</form>
 
 
