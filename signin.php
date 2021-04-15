@@ -73,10 +73,10 @@
       </p>
       <p>
         <input type="submit" value="Log In" name="signin">
-       <a href="signup.php">
+       <a href="#!signup">
          <input type="button" value="Sign Up" />
        </a>
-       <a href="testing.php">
+       <a href="#/!">
          <input type="button" value="Back" />
        </a>
       </p>

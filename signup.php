@@ -86,10 +86,10 @@
       <label for="addy">Address:</label>
       <input type="text" name="addy" required><br><br>
       <input type="submit" name="signup" value="Sign Up">
-      <a href="signin.php">
+      <a href="#!signin">
         <input type="button" value="Sign In" />
       </a>
-      <a href="testing.php">
+      <a href="#/!">
         <input type="button" value="Back" />
       </a>
       </form>
