@@ -4,6 +4,7 @@
 	<title>Plan for Smart Service : Cart</title>
 	 <link rel="stylesheet" type="text/css" href="style.css">
    <link rel="stylesheet" type="text/css" href="service.css">
+	 <link rel="stylesheet" href="flower.css">
 </head>
 
 <div style="position:absolute; top:13.5%; right:97%">
@@ -76,7 +77,6 @@ catch(PDOException $e)
 
     }
 
-
 $save = $_POST['option'] ?? "";
 
 
@@ -114,6 +114,107 @@ elseif ($save ==="2"){
 
 
 
-<!--<a href="#!database" style="width:7%; position: absolute;bottom: 57% ; color: rgb(0,0,0) !important">Continue</a>-->
+<!-- Review -->
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "userdb";
+try {
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    }
+catch(PDOException $e)
+    {
+
+    }
+$sql = mysqli_query($conn,"SELECT car_name FROM comparetablea WHERE id =1");
+$row = mysqli_fetch_assoc($sql);
+$car1 = $row['car_name'];
+$sql = mysqli_query($conn,"SELECT car_name FROM comparetablea WHERE id = 2");
+$row = mysqli_fetch_assoc($sql);
+$car2 = $row['car_name'];
+echo $car1;
+echo $car2;
+ ?>
+
+
+<div <?php if ($car1 != "wrx    " && $car2 != "wrx    "){echo " style='display: none';";} ?> style="position:absolute; top:35%">
+<p id="product"> Car: 2020 Subaru Wrx </p>
+
+<table id="customers">
+    <tr>
+        <th>Customer</th>
+        <th>Rating</th>
+        <th>Comment on Product</th>
+    </tr>
+    <tr>
+        <td >Allen</td>
+        <td >4.5/5</td>
+        <td >Pros are Eager Boxer engine, practical form factor, fun in the snow. However, cons are Confusing & gimmicky info screens, aging platform, still looks boy racer-ish</td>
+    </tr>
+    <tr>
+        <td>Juno</td>
+        <td>3.0/5</td>
+        <td>Pros are the car has agile, surefooted handling and powerful engines but for cons, the car has poor fuel economy, firm ride and noisy and cheap interior</td>
+    </tr>
+</table>
+</div>
+
+
+
+<br>
+<br>
+
+<div <?php if ($car1 != "civic  " && $car2 != "civic  " ){ echo " style='display: none';";} ?> style="position:absolute; top:55%">
+<p id="product" name ="civic"> Car: 2019 Honda Civic </p>
+
+<table id="customers">
+    <tr>
+        <th>Customer</th>
+        <th>Rating</th>
+        <th>Comment on Product</th>
+    </tr>
+    <tr>
+        <td>Kelvin</td>
+        <td>4.0/5</td>
+        <td>The Good The 2019 Honda Civic is attractive, comfortable, fuel-efficient and an entertaining drive. The Bad The infotainment system lags when switching between menus and the car lacks device charging ports. The Bottom Line The 2019 Honda Civic is an even stronger compact sedan than before.</td>
+    </tr>
+    <tr>
+        <td>Jason</td>
+        <td>4.2/5</td>
+        <td>Pros are the car has excellent fuel economy and performance from turbocharged engine and great ride quality. It also has roomy cabin with high-quality materials. For cons, its overly vigilant forward collision warining system is frustrating</td>
+    </tr>
+</table>
+</div>
+
+
+<br>
+<br>
+
+
+
+<div <?php if ($car1 != "camry  " && $car2 != "camry  "){echo " style='display: none';";} ?> style="position:absolute; top:80%">
+<p id="producta" name ="camry"> Car: 2019 Toyota Camry </p>
+
+<table id="customers">
+    <tr>
+        <th>Customer</th>
+        <th>Rating</th>
+        <th>Comment on Product</th>
+    </tr>
+    <tr>
+        <td>Eunice</td>
+        <td>4.7/5</td>
+        <td>has fostered an enviable reputation for quality and reliability in the three and a half decades since its launch. A facelifted eighth-generation mid-size sedan is upon us now, and with seven models to choose from and an extensive list of options available, it's an almost guaranteed fit for any driver.</td>
+    </tr>
+    <tr>
+        <td>Irene</td>
+        <td>4.0/5</td>
+        <td>The 2019 is the fifth Camry I have leased. The previous four were all reliable and great performers. I love the new styling of the 2019 Camry. The ride is also awesome. The problem with the car is very sluggish and delayed acceleration. My other four Camry's were very responsive and had quick acceleration, so much better than the 2019. I can't believe that the folks at Toyota aren't aware of this. I am very disappointed with the car's performance. Too bad, because it really is a nice car. Won't get a sixth one unless they fix this. Hoping for a software update or a recall to fix this very noticeable acceleration problem.</td>
+    </tr>
+</table>
+<div>
+
 </body>
 </html>
