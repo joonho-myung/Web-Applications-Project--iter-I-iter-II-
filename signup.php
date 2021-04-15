@@ -45,16 +45,6 @@
       if (mysqli_query($conn, $sql)) {
         echo "Users created successfully";
       }
-      $dsn = 'mysql:dbname=userdb;host=localhost';
-      $user = 'root';
-      $pass = '';
-
-      $admin = 'admin';
-      $pdo = new PDO($dsn,$user,$pass);
-      $sql = "INSERT INTO  userdata(email,pass)
-               VALUES(?,?)";
-      $smt = $pdo->prepare($sql);
-      $smt->execute(array($admin,md5($admin)));
 
       $fname = $_POST['fname'] ?? "";
       $lname =  $_POST['lname'] ?? "";
@@ -63,7 +53,9 @@
       $pnum = $_POST['pnum'] ?? "";
       $addy = $_POST['addy'] ?? "";
 
-
+      $dsn = 'mysql:dbname=userdb;host=localhost';
+      $user = 'root';
+      $pass = '';
 
       $pdo = new PDO($dsn,$user,$pass);
       $sql = "INSERT INTO  userdata(fname,lname,email,pass,pnum,addy)

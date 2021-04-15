@@ -72,34 +72,6 @@ if ($conn->multi_query($sql) === TRUE) {}
         }
 echo "<br>";
 echo "<br>";
-$sql = "SELECT * FROM renttable WHERE email =('$current_email')";
-if($result = mysqli_query($conn, $sql)){
-		if(mysqli_num_rows($result) > 0){
-				echo "<table>";
-						echo "<tr>";
-								echo "<th>Car</th>";
-								echo "<th>Duration</th>";
-								echo "<th>License</th>";
-								echo "<th>Date</th>";
-								echo "<th>Time</th>";
-								echo "<th>Price</th>";
-						echo "</tr>";
-				while($row = mysqli_fetch_array($result)){
-						echo "<tr>";
-								echo "<td>" . $row['car_name'] . "</td>"."</td>";
-								echo "<td>" . $row['duration'] . "</td>"."</td>"."</td>";
-								echo "<td>" . $row['license'] . "</td>"."</td>"."</td>";
-								echo "<td>" . $row['date_'] . "</td>"."</td>"."</td>";
-								echo "<td>" . $row['time_'] . "</td>"."</td>"."</td>";
-								echo "<td>" . $row['price'] . "</td>"."</td>"."</td>";
-						echo "</tr>";
-				}
-				echo "</table>";
-				mysqli_free_result($result);
-			}
-		}
-echo "<br>";
-echo "<br>";
 						$sql = "SELECT * FROM Flower_table WHERE email =('$current_email')";
 						if($result = mysqli_query($conn, $sql)){
 						    if(mysqli_num_rows($result) > 0){
