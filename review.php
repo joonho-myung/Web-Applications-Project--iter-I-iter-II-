@@ -8,7 +8,7 @@
 <body>
 
 
-<head>    
+<head>
     <title>Plan for Smart Service : Sign In</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -32,14 +32,14 @@
     </tr>
     <tr>
 
-        <td value = "Allen" name = "name1">Allen</td>
-        <td value = "4.5/5" name = "score1">4.5/5</td>
-        <td value = "Pros are Eager Boxer engine, practical form factor, fun in the snow. However, cons are Confusing & gimmicky info screens, aging platform, still looks boy racer-ish" name = "review1">Pros are Eager Boxer engine, practical form factor, fun in the snow. However, cons are Confusing & gimmicky info screens, aging platform, still looks boy racer-ish</td>
+        <td>Allen</td>
+        <td>4.5/5</td>
+        <td>Pros are Eager Boxer engine, practical form factor, fun in the snow. However, cons are Confusing & gimmicky info screens, aging platform, still looks boy racer-ish</td>
     </tr>
     <tr>
-        <td name = "name2" value ="Juno">Juno</td>
-        <td "score2" value = "3.0/5">3.0/5</td>
-        <td name = "review1" value="Pros are the car has agile, surefooted handling and powerful engines but for cons, the car has poor fuel economy, firm ride and noisy and cheap interior">Pros are the car has agile, surefooted handling and powerful engines but for cons, the car has poor fuel economy, firm ride and noisy and cheap interior</td>
+        <td >Juno</td>
+        <td >3.0/5</td>
+        <td>Pros are the car has agile, surefooted handling and powerful engines but for cons, the car has poor fuel economy, firm ride and noisy and cheap interior</td>
 
         <td>Allen</td>
         <td>4.5/5</td>
@@ -294,4 +294,3 @@ Great option for last minute flower delivery.</td>
 </html>
 
 </html>
-
