@@ -100,6 +100,7 @@ elseif ($save ==="2"){
 		header("Location: testing.php#!/database");
 	}
  ?>
+
 </div>
 <div style="position:absolute; top:25%">
 <form action="comparea.php" method="post">
@@ -128,14 +129,14 @@ catch(PDOException $e)
     {
 
     }
-$sql = mysqli_query($conn,"SELECT car_name FROM comparetablea WHERE id =1");
-$row = mysqli_fetch_assoc($sql);
+$result = mysqli_query($conn,"SELECT car_name FROM comparetablea WHERE id =1");
+$row = mysqli_fetch_assoc($result);
 $car1 = $row['car_name'];
-$sql = mysqli_query($conn,"SELECT car_name FROM comparetablea WHERE id = 2");
-$row = mysqli_fetch_assoc($sql);
+$result = mysqli_query($conn,"SELECT car_name FROM comparetablea WHERE id = 2");
+$row = mysqli_fetch_assoc($result);
 $car2 = $row['car_name'];
-echo $car1;
-echo $car2;
+
+mysqli_close($conn);
  ?>
 
 
