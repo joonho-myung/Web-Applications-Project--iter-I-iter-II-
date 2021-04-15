@@ -1,118 +1,208 @@
 <html>
 <head>
 	<title>Plan for Smart Service : Payment</title>
-	 <link rel="stylesheet" type="text/css" href="main.css">
-	 <link rel="stylesheet" type="text/css" href="css/contact.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: Arial;
+  font-size: 17px;
+  padding: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+a {
+  color: #2196F3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}
+</style>
 </head>
 <body>
-<<<<<<< HEAD
-	<div id="navbar">
-		<a href="main.html" style="width:7%; position: absolute; right: 22%; color: rgb(0,0,0) !important">Home</a>
-		<a href="database.php" style="width:7%; position: absolute; right: 17% ;color: rgb(0,0,0) !important">Database</a>
-		<a onclick="openForm()" style="width:7%; position: absolute; right: 11%; color: rgb(0,0,0) !important"> Contact Us</a>
-		<a href="" style="width:7%; position: absolute; right: 5%; color: rgb(0,0,0) !important"> Reviews</a>
-		<a href="services.html" style="width:7%;  position: absolute; right: 0%; color: rgb(0,0,0) !important"> Service</a>
-		<a href="cart.php">
-		<img alt="Facebook" src="https://www.charge.com/wp-content/uploads/2015/12/cart.png" class="thumbnail" width="50" height="50"></a>
+
+	<?php
+	session_start();
+
+	$userid = $_SESSION['userid'];
+	$servername = "localhost";
+	$username = "root";
+	$password = "";
+	$db = "userdb";
+
+
+
+
+	if(isset($_POST['checkout'])){
+	$conn = new mysqli($servername, $username, $password,$db);
+
+	$sql = "CREATE TABLE paymentinfo (
+	userid INT(6) UNSIGNED,
+	cardname VARCHAR(255) NOT NULL,
+	cardnum VARCHAR(255) NOT NULL,
+	expmonth VARCHAR(255) NOT NULL,
+	expyear VARCHAR(255) NOT NULL,
+	ccv VARCHAR(255) NOT NULL
+	)";
+	if (mysqli_query($conn, $sql)) {
+		echo "Users created successfully";
+	}
+
+	$cardname = $_POST['cardname'] ?? "";
+	$cardnum =  $_POST['cardnumber'] ?? "";
+	$expmonth = $_POST['expmonth'] ?? "";
+	$expyear = $_POST['expyear'] ?? "";
+	$ccv = $_POST['ccv'] ?? "";
+
+	$dsn = 'mysql:dbname=userdb;host=localhost';
+	$user = 'root';
+	$pass = '';
+
+	$pdo = new PDO($dsn,$user,$pass);
+	$sql = "INSERT INTO  paymentinfo(userid,cardname,cardnum,expmonth,expyear,ccv)
+					 VALUES(?,?,?,?,?,?)";
+	$smt = $pdo->prepare($sql);
+	$smt->execute(array($userid,$cardname,$cardnum,$expmonth,$expyear,$ccv)); //execute the query
+
+	mysqli_close($conn);
+
+	header("Location: confirm.php");
+	}
+	?>
+
+
+
+	<div class="row">
+	  <div class="col-75">
+	    <div class="container">
+	      <form action="payment.php" method="post">
+
+	        <div class="row">
+	          <div class="col-50">
+	            <h3>Payment</h3>
+	            <label for="fname">Accepted Cards</label>
+	            <div class="icon-container">
+	              <i class="fa fa-cc-visa" style="color:navy;"></i>
+	              <i class="fa fa-cc-amex" style="color:blue;"></i>
+	              <i class="fa fa-cc-mastercard" style="color:red;"></i>
+	              <i class="fa fa-cc-discover" style="color:orange;"></i>
+	            </div>
+	            <label for="cname">Name on Card</label>
+	            <input type="text" id="cname" name="cardname" >
+	            <label for="ccnum">Credit card number</label>
+	            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+	            <label for="expmonth">Exp Month</label>
+	            <input type="text" id="expmonth" name="expmonth" >
+	            <div class="row">
+	              <div class="col-50">
+	                <label for="expyear">Exp Year</label>
+	                <input type="text" id="expyear" name="expyear" >
+	              </div>
+	              <div class="col-50">
+	                <label for="cvv">CVV</label>
+	                <input type="text" id="cvv" name="cvv" >
+	              </div>
+	            </div>
+	          </div>
+
+	        </div>
+	        <input type="submit" name="checkout" value="Continue to checkout" class="btn">
+	      </form>
+	    </div>
+	  </div>
+
+	  </div>
 	</div>
 
-
-
-<!--Contact Us Popup Code -->
-	<div class="form-popup" id="contactus">
-				<div class="wrap-contact2">
-					<form class="contact2-form">
-						<span class="contact2-form-title">
-							Contact Us
-						</span>
-
-						<div class="wrap-input2">
-							<input class="input2" type="text" name="name">
-							<span class="focus-input2" data-placeholder="NAME"></span>
-						</div>
-
-						<div class="wrap-input2">
-							<input class="input2" type="text" name="email">
-							<span class="focus-input2" data-placeholder="EMAIL"></span>
-						</div>
-
-						<div class="wrap-input2">
-							<textarea class="input2" name="message"></textarea>
-							<span class="focus-input2" data-placeholder="MESSAGE"></span>
-						</div>
-
-						<div class="container-contact2-form-btn">
-							<div class="wrap-contact2-form-btn">
-								<div class="contact2-form-bgbtn"></div>
-								<button class="contact2-form-btn">
-									Send Your Message
-								</button>
-							</div>
-							<div class="wrap-contact2-form-btn">
-								<div class="contact2-form-bgbtn"></div>
-								<button class="contact2-form-btn" onclick="closeForm()">
-									Close
-								</button>
-							</div>
-						</div>
-					</form>
-				</div>
-
-	</div>
-		<script>
-
-		function openForm() {
-		  document.getElementById("contactus").style.display = "block";
-		}
-
-		function closeForm() {
-		  document.getElementById("contactus").style.display = "none";
-		}
-		</script>
-=======
-	<button onclick="home()" class="float-left submit-button" >Home</button>
-	<button onclick="logo()" class="float-left submit-button" >System logo</button>
-	<button onclick="aboutUs()" class="float-left submit-button" >About us</button>
-	<button	onclick="contactUs()" class="float-left submit-button" >Contact us</button>
-	<button onclick="signup()" class="float-left submit-button" >Sign up</button>
-	<button onclick="review()" class="float-left submit-button" >Reviews</button>
-	<button onclick="cart()" class="float-left submit-button" >Shopping Cart</button>
-	<button onclick="services()" class="float-left submit-button" >Types of Service</button>
-
-	<script>
-	function home(){
-	  window.location='main.html';
-	}
-	function aboutUs(){
-	  window.location='aboutUs.html';
-	}
-	function contactUs(){
-	  window.location='contactUs.html';
-	}
-	function ride(){
-	  window.location='rideToDestination.php';
-	}
-	function deliver(){
-	  window.location='ride&deliver.php';
-	}
-	function services(){
-	  window.location='services.html';
-	}
-	function cart(){
-	  window.location='cart.php';
-	}
-	function signup(){
-	  window.location='signup.php';
-	}
-	function logo(){
-      window.location='logo.html';
-    }
-	function review(){
-		window.location='review.html';
-	}
-</script>
-
-
->>>>>>> 0ab051be7c0ed312cb0b74df91542113814f03b3
 </body>
 </html>

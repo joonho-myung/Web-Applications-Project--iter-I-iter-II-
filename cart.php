@@ -142,7 +142,7 @@ echo "<br>";
     						        mysqli_free_result($result);
                       }
                     }
-
+echo '<br><br><a href="payment.php"> Check Out<a>';
 
 		mysqli_close($conn);
 		?>
