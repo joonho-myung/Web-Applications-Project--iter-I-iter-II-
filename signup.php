@@ -49,7 +49,6 @@
       $user = 'root';
       $pass = '';
 
-
       $admin = 'admin';
       $pdo = new PDO($dsn,$user,$pass);
       $sql = "INSERT INTO  userdata(email,pass)
