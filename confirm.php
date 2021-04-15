@@ -119,25 +119,99 @@
       <div ng-view></div>
   		<script src="app.js"></script>
       <?php
-      echo "hello world";
-      session_start();
 
+			$dsn = 'mysql:dbname=userdb;host=localhost';
       $servername = "localhost";
       $username = "root";
       $password = "";
+			$db = "userdb";
+
+			//display items
+			$conn = new mysqli($servername, $username, $password,$db);
+
+			$sql = "CREATE TABLE invoice (
+      userid INT(6) UNSIGNED ,
+      fname VARCHAR(255) NOT NULL,
+      lname VARCHAR(255) NOT NULL,
+      price DECIMAL(18,2) NOT NULL
+      )";
+
+			echo "<br><br><br>";
+			//Order Redisplay
+			$coffeePrice = 0;
+			$flowerPrice = 0;
+			$sub = 0;
+			$totalPrice = 0;
+
+			if($conn->query($sql) == TRUE){
+				echo "invoice created";
+			}
+			$pdo = new PDO($dsn,$username,$password);
+			$sql = "SELECT coffee_name, coffee_store, coffee_price FROM coffee_table";
+
+			$result = $conn->query($sql);
+			if($result-> num_rows > 0){
+        while($row = $result-> fetch_assoc()){
+          echo $row['coffee_store'] ." ". $row['coffee_name'] ." ". $row['coffee_price']. "<br>" ;
+					$temp = str_replace("$","",$row['coffee_price']);
+					$coffeePrice += (float)$temp;
+        }
+			}
+			$sql = "SELECT flower_name, store, price FROM flower_table";
+
+			$result = $conn->query($sql);
+			if($result-> num_rows > 0){
+        while($row = $result-> fetch_assoc()){
+          echo $row['store'] ." ". $row['flower_name'] ." ". $row['price']. "<br>" ;
+					$temp = str_replace("$","",$row['price']);
+					$flowerPrice += (float)$temp;
+        }
+			}
+
+			echo "<br><br>";
+			$sub = $flowerPrice + $coffeePrice;
+			echo "Subtotal : $". $sub .". <br>";
+			echo "HST & GST : $" . round(($sub*0.13),2) .". <br>";
+			$totalPrice = round(($sub*1.13),2);
+			echo "Total : $". $totalPrice. ".";
+			echo '<br>
+				<form action=confirm.php method="post">
+				<input type="submit" value="Place Order" name="placeorder">
+				</form>
+			';
+
 
       if(isset($_POST['placeorder'])){
-        try {
-            $conn = new mysqli($servername, $username, $password);
+				$dsn = 'mysql:dbname=userdb;host=localhost';
+				$servername = "localhost";
+				$username = "root";
+				$password = "";
+				$db = "userdb";
 
-            }
-        catch(PDOException $e)
-            {
+				$userid = $_SESSION['userid'];
+				$sql = "SELECT fname, lname FROM userdata WHERE userid='$userid'";
+				$result= $conn->query($sql);
+				$row= $result->fetch_assoc();
 
-            }
+				$fname = $row['fname'];
+				$lname = $row['lname'];
+
+	      $pdo = new PDO($dsn,$username,$password);
+	      $sql = "INSERT INTO  invoice(userid,fname,lname,price)
+	               VALUES(?,?,?,?)";
+	      $smt = $pdo->prepare($sql);
+				$smt->execute(array($userid,$fname,$lname,$totalPrice));
+
+				$sql = "DELETE FROM coffee_table";
+				$conn->query($sql);
+				$sql = "DELETE FROM flower_table";
+				$conn->query($sql);
 
 
-      header("Location: testing.php");
+				mysqli_close($conn);
+
+      	header("Location: testing.php");
+			}
        ?>
 
       </body>
