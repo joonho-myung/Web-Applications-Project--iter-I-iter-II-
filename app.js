@@ -37,4 +37,7 @@
     .when("/compareb", {
         templateUrl : "compareb.php"
     })
+    .when("/rentcar", {
+        templateUrl : "rentacar.php"
+    })
  });
