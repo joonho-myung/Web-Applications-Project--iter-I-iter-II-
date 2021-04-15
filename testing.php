@@ -57,6 +57,9 @@
 		<a href="#!services" style="width:7%;  position: absolute;top:4% ; right: 0%; color: rgb(0,0,0) !important"> Service</a>
 		<?php
 		if(isset($_SESSION['userid'])){
+			if($_SESSION['userid'] == 1){
+				echo '<a href="admin.php" style="font-size: 15px;width:7%;  position: absolute;top:9% ;right: 2%; color: rgb(0,0,0) !important"> Admin</a>';
+			}
 			echo '<a href="logoff.php" style="font-size: 15px;width:7%;  position: absolute;top:9% ;right: -2%; color: rgb(0,0,0) !important"> Logout</a>';
 		}else{
 			echo'
