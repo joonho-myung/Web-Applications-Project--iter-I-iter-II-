@@ -140,6 +140,7 @@
 			//Order Redisplay
 			$coffeePrice = 0;
 			$flowerPrice = 0;
+			$carPrice = 0;
 			$sub = 0;
 			$totalPrice = 0;
 
@@ -152,7 +153,7 @@
 			$result = $conn->query($sql);
 			if($result-> num_rows > 0){
         while($row = $result-> fetch_assoc()){
-          echo $row['coffee_store'] ." ". $row['coffee_name'] ." ". $row['coffee_price']. "<br>" ;
+          echo $row['coffee_store'] .", ". $row['coffee_name'] .", ". $row['coffee_price']. "<br>" ;
 					$temp = str_replace("$","",$row['coffee_price']);
 					$coffeePrice += (float)$temp;
         }
@@ -162,14 +163,24 @@
 			$result = $conn->query($sql);
 			if($result-> num_rows > 0){
         while($row = $result-> fetch_assoc()){
-          echo $row['store'] ." ". $row['flower_name'] ." ". $row['price']. "<br>" ;
+          echo $row['store'] .", ". $row['flower_name'] .", ". $row['price']. "<br>" ;
 					$temp = str_replace("$","",$row['price']);
 					$flowerPrice += (float)$temp;
         }
 			}
+			$sql = "SELECT car_name, startloc, endloc, price FROM ordertable";
+
+			$result = $conn->query($sql);
+			if($result-> num_rows > 0){
+        while($row = $result-> fetch_assoc()){
+          echo $row['car_name'] .", Starting Location : ". $row['startloc'] .", Ending Location : ". $row['endloc']. ", ".$row['price']. "<br>" ;
+					$temp = str_replace("$","",$row['price']);
+					$carPrice += (float)$temp;
+        }
+			}
 
 			echo "<br><br>";
-			$sub = $flowerPrice + $coffeePrice;
+			$sub = $flowerPrice + $coffeePrice + $carPrice;
 			echo "Subtotal : $". $sub .". <br>";
 			echo "HST & GST : $" . round(($sub*0.13),2) .". <br>";
 			$totalPrice = round(($sub*1.13),2);
