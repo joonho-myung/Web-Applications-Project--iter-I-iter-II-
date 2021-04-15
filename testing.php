@@ -52,7 +52,7 @@
 		</h1>
 		<a href="#/!" style="width:7%; position: absolute;top:4% ;right: 22%; color: rgb(0,0,0) !important">Home</a>
 		<a onclick="openForm()" style="width:7%; position: absolute;top:4% ; right: 11%; color: rgb(0,0,0) !important"> Contact Us</a>
-		<a href="" style="width:7%; position: absolute;top:4% ; right: 17% ;color: rgb(0,0,0) !important"> Reviews</a>
+		<a href="#!review" style="width:7%; position: absolute;top:4% ; right: 17% ;color: rgb(0,0,0) !important"> Reviews</a>
 		<?php
 		if(isset($_SESSION['userid'])){
 			echo '

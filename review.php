@@ -20,9 +20,10 @@
 
 
 <p id="product" value = "Car: 2020 Subaru Wrx" name ="wrx"> Car: 2020 Subaru Wrx </p>
+<!--
 =======
 <p id="product"> Car: 2020 Subaru Wrx </p>
-
+-->
 
 <table id="customers">
     <tr>
