@@ -162,7 +162,7 @@ header("Location: testing.php#!/comparea");
     	<label for="fname">Date:</label>
     	<input type="text" id="Date" name="date1"><br><br>
     	<label for="fname">Time:</label>
-    	<input type="text" id="Time" name="time1"><br><br>
+    	<input type="text" id="Time" name="time1"><br><br><br>
       <input type="submit" name="addtocart" value="Add To Cart">
 </div>
 <div style="position:absolute; right:39%; top:52%">
@@ -182,9 +182,10 @@ header("Location: testing.php#!/comparea");
       <input type="text" id="Date" name="date2"><br><br>
       <label for="fname">Time:</label>
       <input type="text" id="Time" name="time2"><br><br>
-      <label for="fname">Email:</label>
-      <input type="text" id="email" name="email"><br><br>
     </div>
+    <div style="position:absolute; right:70%; top:70%"
+    <label for="fname">Email:</label>
+    <input type="text" id="email" name="email" required><br><br>
 
       </form>
 

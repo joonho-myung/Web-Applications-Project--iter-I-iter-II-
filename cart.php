@@ -41,12 +41,13 @@ if ($conn->multi_query($sql) === TRUE) {}
 						}
 					}
 
-
     echo "<br>";
     echo "<br>";
+		$button = False;
 		$sql = "SELECT * FROM Ordertable WHERE email =('$current_email')";
 		if($result = mysqli_query($conn, $sql)){
 		    if(mysqli_num_rows($result) > 0){
+					$button = True;
 		        echo "<table>";
 		            echo "<tr>";
 		                echo "<th>Car</th>";
@@ -75,6 +76,7 @@ echo "<br>";
 $sql = "SELECT * FROM renttable WHERE email =('$current_email')";
 if($result = mysqli_query($conn, $sql)){
 		if(mysqli_num_rows($result) > 0){
+				$button = True;
 				echo "<table>";
 						echo "<tr>";
 								echo "<th>Car</th>";
@@ -103,6 +105,7 @@ echo "<br>";
 						$sql = "SELECT * FROM Flower_table WHERE email =('$current_email')";
 						if($result = mysqli_query($conn, $sql)){
 						    if(mysqli_num_rows($result) > 0){
+										$button = True;
 						        echo "<table>";
 						            echo "<tr>";
 						                echo "<th>Flower</th>";
@@ -142,7 +145,12 @@ echo "<br>";
     						        mysqli_free_result($result);
                       }
                     }
-echo '<br><br><a href="payment.php"> Check Out<a>';
+										if($button){
+
+											echo '<br><br><a href="payment.php"> Check Out<a>';
+										}else{
+											echo '<h2> No items in Cart. </h2>';
+										}
 
 		mysqli_close($conn);
 		?>

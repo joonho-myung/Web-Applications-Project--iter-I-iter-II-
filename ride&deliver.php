@@ -144,7 +144,7 @@ header("Location: testing.php#!/database");
     	<input type="text" id="Time" name="time"><br><br>
 
 
-	<div style="position:absolute; right:45%; top:16%">
+	<div style="position:absolute; right:45%; top:9%">
     <p> Which Coffee do you want? </p>
 	  <label for="coffee">Choose your Coffee</label>
 	  <select name="coffee" id="coffee">
@@ -174,11 +174,12 @@ header("Location: testing.php#!/database");
     	<input type="text" id="Date" name="date"><br><br>
     	<label for="fname">Time:</label>
     	<input type="text" id="Time" name="time"><br><br>
-      <label for="fname">Email:</label>
-      <input type="text" id="Time" name="email"><br><br>
 </div>
+<div style="position:absolute; left:10%; top:40%">
+			<label for="fname">Email:</label>
+			<input type="text" id="Time" name="email" required><br><br>
       <input type="submit" name="addtocart" value="Add To Cart">
-
+</div>
 	</form>
 
 

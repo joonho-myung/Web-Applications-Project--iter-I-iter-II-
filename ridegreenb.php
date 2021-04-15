@@ -284,11 +284,12 @@ header("Location: testing.php#!/compareb");
       	<input type="text" id="Date" name="cdate2"><br><br>
       	<label for="fname">Time:</label>
       	<input type="text" id="Time" name="ctime2"><br><br>
-        <label for="fname">Email:</label>
-      	<input type="text" id="email" name="email"><br><br>
 </div>
-
+<div style="position:absolute; left:12%; top:75%">
+        <label for="fname">Email:</label>
+        <input type="text" id="email" name="email" required><br><br>
         <input type="submit" name="addtocart" value="Add To Cart">
+</div>
 	</form>
 
 

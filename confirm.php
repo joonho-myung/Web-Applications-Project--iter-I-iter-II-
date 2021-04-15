@@ -217,6 +217,8 @@
 				$conn->query($sql);
 				$sql = "DELETE FROM flower_table";
 				$conn->query($sql);
+				$sql = "DELETE FROM ordertable";
+				$conn->query($sql);
 
 
 				mysqli_close($conn);

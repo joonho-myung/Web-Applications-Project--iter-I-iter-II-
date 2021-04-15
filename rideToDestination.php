@@ -136,7 +136,7 @@ mysqli_close($conn);
     	<label for="fname">Time:</label>
     	<input type="text" id="Time" name="time"><br><br>
       <label for="fname">Email:</label>
-    	<input type="text" id="Time" name="email"><br><br>
+    	<input type="text" id="Time" name="email" required><br><br>
       <input type="submit" name="addtocart" value="Add To Cart">
 </form>
 
