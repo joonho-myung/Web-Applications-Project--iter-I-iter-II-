@@ -53,7 +53,7 @@
 		<a href="#/!" style="width:7%; position: absolute;top:4% ;right: 22%; color: rgb(0,0,0) !important">Home</a>
 		<a href="#!database" style="width:7%; position: absolute;top:4% ; right: 17% ;color: rgb(0,0,0) !important">Database</a>
 		<a onclick="openForm()" style="width:7%; position: absolute;top:4% ; right: 11%; color: rgb(0,0,0) !important"> Contact Us</a>
-		<a href="" style="width:7%; position: absolute;top:4% ; right: 5%; color: rgb(0,0,0) !important"> Reviews</a>
+		<a href="#!review" style="width:7%; position: absolute;top:4% ; right: 5%; color: rgb(0,0,0) !important"> Reviews</a>
 		<a href="#!services" style="width:7%;  position: absolute;top:4% ; right: 0%; color: rgb(0,0,0) !important"> Service</a>
 		<?php
 		if(isset($_SESSION['userid'])){

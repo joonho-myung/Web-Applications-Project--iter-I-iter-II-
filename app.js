@@ -40,4 +40,7 @@
     .when("/rentcar", {
         templateUrl : "rentacar.php"
     })
+    .when("/review", {
+        templateUrl : "review.php"
+    })
  });
