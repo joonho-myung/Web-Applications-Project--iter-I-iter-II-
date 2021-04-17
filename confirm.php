@@ -141,6 +141,7 @@
 			$coffeePrice = 0;
 			$flowerPrice = 0;
 			$carPrice = 0;
+			$rentPrice = 0;
 			$sub = 0;
 			$totalPrice = 0;
 
@@ -185,7 +186,7 @@
         while($row = $result-> fetch_assoc()){
           echo $row['car_name'] .",Duration you would like to rent the car for: ". $row['duration'] .", ". $row['price']. "<br>" ;
 					$temp = str_replace("$","",$row['price']);
-					$rentprice += (float)$temp;
+					$rentPrice += (float)$temp;
         }
 			}
 
