@@ -192,7 +192,7 @@
 
 
 			echo "<br><br>";
-			$sub = $flowerPrice + $coffeePrice + $carPrice + $rentprice;
+			$sub = $flowerPrice + $coffeePrice + $carPrice + $rentPrice;
 			echo "Subtotal : $". $sub .". <br>";
 			echo "HST & GST : $" . round(($sub*0.13),2) .". <br>";
 			$totalPrice = round(($sub*1.13),2);
