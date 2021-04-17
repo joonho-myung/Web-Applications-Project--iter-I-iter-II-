@@ -178,9 +178,20 @@
 					$carPrice += (float)$temp;
         }
 			}
+			$sql = "SELECT car_name, duration, price FROM renttable";
+
+			$result = $conn->query($sql);
+			if($result-> num_rows > 0){
+        while($row = $result-> fetch_assoc()){
+          echo $row['car_name'] .",Duration you would like to rent the car for: ". $row['duration'] .", ". $row['price']. "<br>" ;
+					$temp = str_replace("$","",$row['price']);
+					$rentprice += (float)$temp;
+        }
+			}
+
 
 			echo "<br><br>";
-			$sub = $flowerPrice + $coffeePrice + $carPrice;
+			$sub = $flowerPrice + $coffeePrice + $carPrice + $rentprice;
 			echo "Subtotal : $". $sub .". <br>";
 			echo "HST & GST : $" . round(($sub*0.13),2) .". <br>";
 			$totalPrice = round(($sub*1.13),2);
@@ -218,6 +229,8 @@
 				$sql = "DELETE FROM flower_table";
 				$conn->query($sql);
 				$sql = "DELETE FROM ordertable";
+				$conn->query($sql);
+				$sql = "DELETE FROM renttable";
 				$conn->query($sql);
 
 
